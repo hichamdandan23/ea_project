@@ -12,7 +12,6 @@
         <option value="$PROJECT_DIR$/web/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-service/pom.xml" />
         <option value="$PROJECT_DIR$/commons/pom.xml" />
-        <option value="$PROJECT_DIR$/gateway-service/pom.xml" />
         <option value="$PROJECT_DIR$/gateway2-service/pom.xml" />
         <option value="$PROJECT_DIR$/airline-service/pom.xml" />
       </list>
