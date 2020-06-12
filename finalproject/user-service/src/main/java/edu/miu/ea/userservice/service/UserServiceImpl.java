@@ -45,8 +45,6 @@ public class UserServiceImpl implements UserService {
         }
 
         user = new User(email, password);
-        user.setCompany("");
-        user.setWebsite("");
         userRepository.save(user);
         result.put(ItemType.User, user);
 

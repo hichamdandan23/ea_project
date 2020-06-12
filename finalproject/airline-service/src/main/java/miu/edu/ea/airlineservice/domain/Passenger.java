@@ -2,6 +2,7 @@ package miu.edu.ea.airlineservice.domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Passenger {
@@ -15,57 +16,16 @@ public class Passenger {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     @Id
-    @GeneratedValue
     private Long id;
 
-    private String firstName;
-    private String lastName;
-    private LocalDate dateOfBirth;
-    private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-
+    private LocalDateTime createdAt;
 }
