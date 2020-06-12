@@ -1,0 +1,33 @@
+server:
+  port: 6001
+
+spring:
+  application:
+    name: geteway2-service
+  cloud:
+    gateway:
+      routes:
+        - id: user-service-need-auth
+          uri: lb://user-service
+          predicates:
+            - Path=/user/edit
+          filters:
+            - RewritePath=/user/(?<segment>.*), /$\{segment}
+            - Auth=true
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+          filters:
+            - RewritePath=/user/(?<segment>.*), /$\{segment}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
