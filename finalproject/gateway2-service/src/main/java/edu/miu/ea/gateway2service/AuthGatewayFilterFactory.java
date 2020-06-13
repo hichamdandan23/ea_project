@@ -18,6 +18,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ServerWebExchange;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +28,8 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
     private static final Log logger = LogFactory.getLog(AuthGatewayFilterFactory.class);
 
     private static final String AUTHORIZE_TOKEN = "USER_TOKEN";
+    private static final String USER_ID = "USER_ID";
+    private static final String USER_EMAIL = "USER_EMAIL";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -63,25 +67,33 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
                 response.setStatusCode(HttpStatus.UNAUTHORIZED);
                 return response.setComplete();
             }
-            boolean verified = verifyToken(token);
-            if (!verified) {
+
+
+            String url =  lookupUrlFor("user-service") + "/verify";
+            UserVerifyResponse userVerifyResponse = restTemplate.exchange(
+                    url,
+                    HttpMethod.POST,
+                    createHttpEntity(token),
+                    UserVerifyResponse.class
+            ).getBody();
+
+            if (userVerifyResponse.getCode() == Code.Success) {
+                ServerHttpRequest host = exchange.getRequest().mutate()
+                        .header(USER_ID, userVerifyResponse.getId().toString())
+                        .header(USER_EMAIL, userVerifyResponse.getEmail())
+                        .build();
+                ServerWebExchange build = exchange.mutate().request(host).build();
+                return chain.filter(build);
+            } else {
                 response.setStatusCode(HttpStatus.UNAUTHORIZED);
                 return response.setComplete();
             }
-            return chain.filter(exchange);
         };
     }
 
-    private boolean verifyToken(String token) {
-        String url =  lookupUrlFor("user-service") + "/verify";
-        UserVerifyResponse userVerifyResponse = restTemplate.exchange(
-                url,
-                HttpMethod.POST,
-                createHttpEntity(token),
-                UserVerifyResponse.class
-        ).getBody();
+    private boolean verifyToken(ServerWebExchange exchange, String token) {
 
-        return (userVerifyResponse.getCode() == Code.Success);
+        return false;
     }
 
     private String lookupUrlFor(String appName) {

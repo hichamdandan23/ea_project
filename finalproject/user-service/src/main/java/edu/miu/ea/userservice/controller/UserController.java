@@ -4,8 +4,11 @@ import edu.miu.ea.commons.contracts.*;
 import edu.miu.ea.userservice.domain.User;
 import edu.miu.ea.userservice.service.ItemType;
 import edu.miu.ea.userservice.service.UserService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.EnumMap;
@@ -13,6 +16,7 @@ import java.util.EnumMap;
 @RestController
 public class UserController {
     private UserService userService;
+    private static final Log logger = LogFactory.getLog(UserController.class);
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -100,7 +104,11 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public UserEditProfileResponse edit(UserEditProfileRequest request) {
+    public UserEditProfileResponse edit(UserEditProfileRequest request, @RequestHeader(value = "USER_ID", defaultValue = "0") String userIdStr) {
+        Long userId = Long.parseLong(userIdStr);
+
+        logger.info("/edit userId=" + userId);
+
         boolean result = userService.editProfile(request.getCompany(), request.getWebsite());
 
         UserEditProfileResponse userEditProfileResponse = new UserEditProfileResponse(Code.Success, "");
