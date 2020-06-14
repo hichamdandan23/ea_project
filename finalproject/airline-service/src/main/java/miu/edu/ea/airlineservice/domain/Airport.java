@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 @Entity
 public class Airport {
-    public Airport() {}
+    public Airport() {
+    }
 
     public Long getId() {
         return id;

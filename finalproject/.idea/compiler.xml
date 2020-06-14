@@ -6,18 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="web" />
         <module name="commons" />
-        <module name="finalproject" />
-        <module name="gateway2-service" />
+        <module name="gateway-service" />
         <module name="eureka-service" />
         <module name="user-service" />
         <module name="airline-service" />
+        <module name="contracts" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="gateway-service" target="11" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -25,9 +21,7 @@
       <module name="commons" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
-      <module name="gateway2-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
-      <module name="web" options="-parameters" />
     </option>
   </component>
 </project>

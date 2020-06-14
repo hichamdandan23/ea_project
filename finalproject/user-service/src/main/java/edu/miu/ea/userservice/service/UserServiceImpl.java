@@ -6,7 +6,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import edu.miu.ea.commons.contracts.Code;
+import edu.miu.ea.commons.service.BaseReadWriteServiceImpl;
+import edu.miu.ea.contracts.Code;
+import edu.miu.ea.contracts.user.UserResponse;
 import edu.miu.ea.userservice.dao.UserRepository;
 import edu.miu.ea.userservice.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ import java.util.EnumMap;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseReadWriteServiceImpl<UserResponse, User, Long> implements UserService {
     private UserRepository userRepository;
 
     @Value("${user-service.token-secret}")
@@ -38,7 +40,7 @@ public class UserServiceImpl implements UserService {
         result.put(ItemType.User, null);
 
         User user = getUserByEmail(email);
-        if(user != null) {
+        if (user != null) {
             result.put(ItemType.Code, Code.AlreadyExists);
             result.put(ItemType.Msg, "Email already exists");
             return result;
@@ -48,7 +50,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         result.put(ItemType.User, user);
 
-        return  result;
+        return result;
     }
 
     @Override
@@ -67,7 +69,7 @@ public class UserServiceImpl implements UserService {
                     .withClaim("id", user.getId())
                     .withClaim("email", user.getEmail())
                     .sign(algorithm);
-        } catch (JWTCreationException exception){
+        } catch (JWTCreationException exception) {
             //Invalid Signing configuration / Couldn't convert Claims.
         }
 
@@ -82,14 +84,14 @@ public class UserServiceImpl implements UserService {
             JWTVerifier verifier = JWT.require(algorithm)
                     .build(); //Reusable verifier instance
             DecodedJWT jwt = verifier.verify(token);
-            if(jwt == null) {
+            if (jwt == null) {
                 return null;
             }
 
             Long userId = jwt.getClaim("id").asLong();
             User user = userRepository.findById(userId).get();
             return user;
-        } catch (JWTVerificationException exception){
+        } catch (JWTVerificationException exception) {
             return null;
         }
     }

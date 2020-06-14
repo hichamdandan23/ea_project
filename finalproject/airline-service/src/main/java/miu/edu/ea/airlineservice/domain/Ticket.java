@@ -5,7 +5,8 @@ import java.time.LocalDate;
 
 @Entity
 public class Ticket {
-    public Ticket() {}
+    public Ticket() {
+    }
 
     public Long getId() {
         return id;

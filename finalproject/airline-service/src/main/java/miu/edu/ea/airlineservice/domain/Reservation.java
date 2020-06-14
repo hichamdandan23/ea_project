@@ -5,7 +5,8 @@ import java.util.List;
 
 @Entity
 public class Reservation {
-    public Reservation() {}
+    public Reservation() {
+    }
 
     public Long getId() {
         return id;

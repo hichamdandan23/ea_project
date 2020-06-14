@@ -6,7 +6,8 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Passenger {
-    public Passenger() {}
+    public Passenger() {
+    }
 
     public Long getId() {
         return id;

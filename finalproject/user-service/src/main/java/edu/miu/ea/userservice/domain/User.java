@@ -1,12 +1,13 @@
 package edu.miu.ea.userservice.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
-public class User {
+public class User implements Serializable {
     public User() {
     }
 

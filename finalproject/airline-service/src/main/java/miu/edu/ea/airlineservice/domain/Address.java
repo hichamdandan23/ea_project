@@ -6,7 +6,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Address {
-    public Address() {}
+    public Address() {
+    }
 
     public Long getId() {
         return id;

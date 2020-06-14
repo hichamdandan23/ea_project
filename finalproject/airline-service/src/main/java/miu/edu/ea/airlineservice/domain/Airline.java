@@ -9,7 +9,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Airline {
-    public Airline() {}
+    public Airline() {
+    }
 
     public Long getId() {
         return id;
