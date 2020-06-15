@@ -16,5 +16,5 @@ import edu.miu.ea.commons.exception.ResourceNotFoundException;
 public interface BaseReadWriteService<R, T, I> extends BaseReadService<R, T, I> {
 
     R update(I id, R request) throws ResourceNotFoundException;
-
+    void delete(I id);
 }

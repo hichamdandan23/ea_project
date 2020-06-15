@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/administrator")
 public class AuthAdminController {
     @Autowired
     private AdminService adminService;
     private static final Log logger = LogFactory.getLog(AuthUserController.class);
 
 
-    @PostMapping("/auth")
+    @PostMapping("/token")
     public AdminAuthResponse token(AdminAuthRequest request) {
         AdminAuthResponse adminAuthResponse = new AdminAuthResponse(Code.Success, "", "");
 

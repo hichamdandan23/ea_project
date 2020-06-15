@@ -7,7 +7,7 @@ import edu.miu.ea.userservice.domain.User;
 import java.util.EnumMap;
 
 public interface UserService extends BaseReadWriteService<UserResponse, User, Long> {
-    EnumMap<ItemType, Object> createUser(String email, String password);
+    EnumMap<ItemType, Object> create(User user);
 
     User getUserByEmail(String email);
 

@@ -31,20 +31,19 @@ public class AgentServiceImpl extends BaseReadWriteServiceImpl<AgentResponse, Ag
     private String tokenSecret;
 
     @Override
-    public EnumMap<ItemType, Object> createUser(String email, String password) {
+    public EnumMap<ItemType, Object> create(Agent agent) {
         EnumMap<ItemType, Object> result = new EnumMap<>(ItemType.class);
         result.put(ItemType.Code, Code.Success);
         result.put(ItemType.Msg, "");
         result.put(ItemType.User, null);
 
-        Agent agent = getAgentByEmail(email);
-        if (agent != null) {
+        Agent foundAgent = getAgentByEmail(agent.getEmail());
+        if (foundAgent != null) {
             result.put(ItemType.Code, Code.AlreadyExists);
             result.put(ItemType.Msg, "Email already exists");
             return result;
         }
 
-        agent = new Agent(email, password);
         agentRepository.save(agent);
         result.put(ItemType.User, agent);
 

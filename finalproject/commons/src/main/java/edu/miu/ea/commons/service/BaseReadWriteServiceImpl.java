@@ -30,5 +30,7 @@ public abstract class BaseReadWriteServiceImpl<R extends Serializable, T extends
         return convertEntityToResponse(baseRepository.save(entity));
     }
 
-
+    public void delete(I id) {
+        baseRepository.deleteById(id);
+    }
 }

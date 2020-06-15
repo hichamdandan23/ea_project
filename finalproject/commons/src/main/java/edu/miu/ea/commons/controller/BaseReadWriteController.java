@@ -1,12 +1,12 @@
 package edu.miu.ea.commons.controller;
 
+import edu.miu.ea.contracts.Code;
+import edu.miu.ea.contracts.Response;
 import edu.miu.ea.commons.exception.ResourceNotFoundException;
 import edu.miu.ea.commons.service.BaseReadWriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -31,5 +31,13 @@ public abstract class BaseReadWriteController<R, T, I> extends BaseReadControlle
         return baseService.update(id, request);
     }
 
-
+    @DeleteMapping("/{id}")
+    public Response delete(@PathVariable I id) {
+        try {
+            baseService.delete(id);
+            return new Response(Code.Success, "");
+        }catch (RuntimeException runtimeException) {
+            return new Response(Code.NotExist, "deleted failed");
+        }
+    }
 }

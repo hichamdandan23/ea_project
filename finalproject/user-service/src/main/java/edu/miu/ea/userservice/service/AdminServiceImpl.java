@@ -31,20 +31,19 @@ public class AdminServiceImpl extends BaseReadWriteServiceImpl<AdminResponse, Ad
     private String tokenSecret;
 
     @Override
-    public EnumMap<ItemType, Object> createUser(String email, String password) {
+    public EnumMap<ItemType, Object> create(Admin admin) {
         EnumMap<ItemType, Object> result = new EnumMap<>(ItemType.class);
         result.put(ItemType.Code, Code.Success);
         result.put(ItemType.Msg, "");
         result.put(ItemType.User, null);
 
-        Admin admin = getAdminByEmail(email);
-        if (admin != null) {
+        Admin foundAdmin = getAdminByEmail(admin.getEmail());
+        if (foundAdmin != null) {
             result.put(ItemType.Code, Code.AlreadyExists);
             result.put(ItemType.Msg, "Email already exists");
             return result;
         }
 
-        admin = new Admin(email, password);
         adminRepository.save(admin);
         result.put(ItemType.User, admin);
 

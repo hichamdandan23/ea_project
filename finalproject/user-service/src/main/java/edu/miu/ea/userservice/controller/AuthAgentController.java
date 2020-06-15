@@ -19,7 +19,7 @@ public class AuthAgentController {
 
     private static final Log logger = LogFactory.getLog(AuthAgentController.class);
 
-    @PostMapping("/auth")
+    @PostMapping("/token")
     public AgentAuthResponse token(AgentAuthRequest request) {
         AgentAuthResponse agentAuthResponse = new AgentAuthResponse(Code.Success, "", "");
 

@@ -33,20 +33,19 @@ public class UserServiceImpl extends BaseReadWriteServiceImpl<UserResponse, User
     }
 
     @Override
-    public EnumMap<ItemType, Object> createUser(String email, String password) {
+    public EnumMap<ItemType, Object> create(User user) {
         EnumMap<ItemType, Object> result = new EnumMap<>(ItemType.class);
         result.put(ItemType.Code, Code.Success);
         result.put(ItemType.Msg, "");
         result.put(ItemType.User, null);
 
-        User user = getUserByEmail(email);
-        if (user != null) {
+        User foundUser = getUserByEmail(user.getEmail());
+        if (foundUser != null) {
             result.put(ItemType.Code, Code.AlreadyExists);
             result.put(ItemType.Msg, "Email already exists");
             return result;
         }
 
-        user = new User(email, password);
         userRepository.save(user);
         result.put(ItemType.User, user);
 

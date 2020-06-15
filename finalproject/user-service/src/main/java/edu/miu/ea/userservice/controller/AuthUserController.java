@@ -37,10 +37,14 @@ public class AuthUserController {
         }
 
 
-        EnumMap<ItemType, Object> result = userService.createUser(request.getEmail(), request.getPassword());
+        User user = new User();
+        user.setEmail(request.getEmail());
+        user.setPassword(request.getPassword());
+        EnumMap<ItemType, Object> result = userService.create(user);
+
         Code code = (Code) result.get(ItemType.Code);
         String msg = (String) result.get(ItemType.Msg);
-        User user = (User) result.get(ItemType.User);
+        user = (User) result.get(ItemType.User);
 
         if (code == Code.Success) {
             userRegisterResponse.setToken("Test token");
@@ -51,7 +55,7 @@ public class AuthUserController {
         return userRegisterResponse;
     }
 
-    @PostMapping("/auth")
+    @PostMapping("/token")
     public UserAuthResponse token(UserAuthRequest request) {
         UserAuthResponse userAuthResponse = new UserAuthResponse(Code.Success, "", "");
 

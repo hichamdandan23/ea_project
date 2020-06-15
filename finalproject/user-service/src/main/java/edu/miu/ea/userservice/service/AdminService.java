@@ -8,7 +8,7 @@ import edu.miu.ea.userservice.domain.Agent;
 import java.util.EnumMap;
 
 public interface AdminService extends BaseReadWriteService<AdminResponse, Admin, Long> {
-    EnumMap<ItemType, Object> createUser(String email, String password);
+    EnumMap<ItemType, Object> create(Admin admin);
 
     Admin getAdminByEmail(String email);
 
