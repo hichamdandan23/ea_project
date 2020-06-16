@@ -2,6 +2,7 @@ package edu.miu.ea.userservice.controller;
 
 import edu.miu.ea.contracts.*;
 import edu.miu.ea.contracts.user.*;
+import edu.miu.ea.userservice.domain.Role;
 import edu.miu.ea.userservice.domain.User;
 import edu.miu.ea.userservice.service.ItemType;
 import edu.miu.ea.userservice.service.UserService;
@@ -16,7 +17,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/passenger")
 public class UserController {
     private UserService userService;
     private static final Log logger = LogFactory.getLog(UserController.class);
@@ -106,15 +106,19 @@ public class UserController {
         userVerifyResponse.setEmail(user.getEmail());
         userVerifyResponse.setCreatedAt(user.getCreatedAt());
         userVerifyResponse.setDisabledAt(user.getDisabledAt());
+        userVerifyResponse.setRoles(
+                user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
 
         return userVerifyResponse;
     }
 
     @PostMapping("/edit")
-    public UserEditProfileResponse edit(UserEditProfileRequest request, @RequestHeader(value = "USER_ID", defaultValue = "0") String userIdStr) {
+    public UserEditProfileResponse edit(UserEditProfileRequest request,
+                                        @RequestHeader(value = "USER_ID", defaultValue = "0") String userIdStr,
+                                        @RequestHeader(value = "USER_ROLE", defaultValue = "") String userRole) {
         Long userId = Long.parseLong(userIdStr);
 
-        logger.info("/edit userId=" + userId);
+        logger.info("/edit userId=" + userId + ", userRole=" + userRole);
 
         boolean result = userService.editProfile(request.getCompany(), request.getWebsite());
 

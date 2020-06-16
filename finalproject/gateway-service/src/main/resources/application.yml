@@ -7,20 +7,20 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: user-service-need-auth
-          uri: lb://user-service
-          predicates:
-            - Path=/user/passenger/edit
-          filters:
-            - RewritePath=/user/(?<segment>.*), /$\{segment}
-            - PassengerAuth=true
         - id: user-service-admin
           uri: lb://user-service
           predicates:
             - Path=/user/admin/**
           filters:
             - RewritePath=/user/(?<segment>.*), /$\{segment}
-            - AdminAuth=true
+            - UserAuth=true
+        - id: user-service-edit
+          uri: lb://user-service
+          predicates:
+            - Path=/user/edit
+          filters:
+            - RewritePath=/user/(?<segment>.*), /$\{segment}
+            - UserAuth=true
         - id: user-service
           uri: lb://user-service
           predicates:

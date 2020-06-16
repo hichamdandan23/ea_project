@@ -22,14 +22,16 @@ import org.springframework.web.server.ServerWebExchange;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
-public class AdminAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AdminAuthGatewayFilterFactory.Config> {
-    private static final Log logger = LogFactory.getLog(AdminAuthGatewayFilterFactory.class);
+public class UserAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<UserAuthGatewayFilterFactory.Config> {
+    private static final Log logger = LogFactory.getLog(UserAuthGatewayFilterFactory.class);
 
     private static final String AUTHORIZE_TOKEN = "USER_TOKEN";
     private static final String USER_ID = "USER_ID";
     private static final String USER_EMAIL = "USER_EMAIL";
+    private static final String USER_ROLE = "USER_ROLE";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -38,8 +40,8 @@ public class AdminAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<
     @Autowired
     private EurekaClient eurekaClient;
 
-    public AdminAuthGatewayFilterFactory() {
-        super(AdminAuthGatewayFilterFactory.Config.class);
+    public UserAuthGatewayFilterFactory() {
+        super(Config.class);
         logger.info("Loaded GatewayFilterFactory [Authorize]");
     }
 
@@ -49,7 +51,7 @@ public class AdminAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<
     }
 
     @Override
-    public GatewayFilter apply(AdminAuthGatewayFilterFactory.Config config) {
+    public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
             if (!config.isEnabled()) {
                 return chain.filter(exchange);
@@ -69,7 +71,7 @@ public class AdminAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<
             }
 
 
-            String url = lookupUrlFor("user-service") + "/passenger/verify";
+            String url = lookupUrlFor("user-service") + "/verify";
             UserVerifyResponse userVerifyResponse = restTemplate.exchange(
                     url,
                     HttpMethod.POST,
@@ -81,6 +83,8 @@ public class AdminAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<
                 ServerHttpRequest host = exchange.getRequest().mutate()
                         .header(USER_ID, userVerifyResponse.getId().toString())
                         .header(USER_EMAIL, userVerifyResponse.getEmail())
+                        .header(USER_ROLE,
+                                userVerifyResponse.getRoles().stream().collect(Collectors.joining(",")))
                         .build();
                 ServerWebExchange build = exchange.mutate().request(host).build();
                 return chain.filter(build);
