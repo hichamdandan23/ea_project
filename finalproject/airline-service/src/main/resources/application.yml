@@ -4,52 +4,49 @@ server:
 spring:
   application:
     name: airline-service
-#  datasource:
-#    url: jdbc:mysql://localhost/airline-service
-##    url: jdbc:mariadb://localhost/ea
-#    username: root
-#    password: my-secret-pw
-#    driverClassName: com.mysql.cj.jdbc.Driver
-##    driverClassName: org.mariadb.jdbc.Driver
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#      naming:
-#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQL8Dialect
-#        dialect: org.hibernate.dialect.MariaDBDialect
+  datasource:
+    url: jdbc:mariadb://localhost/ea
+    username: root
+    password: root
+    driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
   devtools:
     livereload:
       enabled: false
-#  kafka:
-#    bootstrap-servers: localhost:9092
-#    consumer:
-#      group-id: email-sending
-#      auto-offset-reset: latest
-#      enable-auto-commit: true
-#      auto-commit-interval: 100
-#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      properties:
-#        spring:
-#          json:
-#            value:
-#              default:
-#                type: edu.miu.ea.contracts.email.Email
-#            trusted:
-#              packages: edu.miu.ea.contracts.email
-#    producer:
-#      retries: 0
-#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-#      properties:
-#        spring:
-#          json:
-#            add:
-#              type:
-#                headers: false
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: email-sending
+      auto-offset-reset: latest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: edu.miu.ea.contracts.email.Email
+            trusted:
+              packages: edu.miu.ea.contracts.email
+    producer:
+      retries: 0
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            add:
+              type:
+                headers: false
 
 eureka:
   client:
