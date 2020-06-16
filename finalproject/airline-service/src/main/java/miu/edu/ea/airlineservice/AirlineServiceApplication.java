@@ -9,7 +9,7 @@ import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableScheduling
+//@EnableScheduling
 public class AirlineServiceApplication {
     @Bean
     public StringJsonMessageConverter jsonConverter() {

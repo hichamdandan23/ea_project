@@ -1,10 +1,14 @@
 package miu.edu.ea.airlineservice.service.request;
 
+import com.sun.istack.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationRequest {
+    @NotNull
     private String passengerId;
+    @NotNull
     private List<Long> flightIds = new ArrayList<>();
 
     public String getPassengerId() {
