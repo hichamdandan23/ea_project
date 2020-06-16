@@ -1,22 +1,9 @@
-package miu.edu.ea.airlineservice.domain;
+package miu.edu.ea.airlineservice.service.response;
 
-import javax.persistence.*;
-
-@Entity
-@SecondaryTable(name="airline_history")
-public class Airline {
-    @Id
-    @GeneratedValue
+public class AirlineResponse {
     private Long id;
     private String code;
     private String name;
-
-    @Column(length = 2000, table = "airline_history")
-    private String history;
-
-
-    public Airline() {
-    }
 
     public Long getId() {
         return id;
@@ -41,13 +28,4 @@ public class Airline {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getHistory() {
-        return history;
-    }
-
-    public void setHistory(String history) {
-        this.history = history;
-    }
-
 }
