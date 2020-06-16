@@ -1,24 +1,13 @@
-package miu.edu.ea.airlineservice.domain;
+package miu.edu.ea.airlineservice.service.response;
 
-import javax.persistence.*;
+import miu.edu.ea.airlineservice.domain.Address;
 
-@Entity
-public class Airport {
-    @Id
-    @GeneratedValue
+
+public class AirportResponse {
     private Long id;
-
-    @Column(length = 3, nullable = false)
     private String code;
-
     private String name;
-
-    @ManyToOne
-    @JoinColumn(name = "address_id")
     private Address address;
-
-    public Airport() {
-    }
 
     public Long getId() {
         return id;
@@ -51,5 +40,4 @@ public class Airport {
     public void setAddress(Address address) {
         this.address = address;
     }
-
 }

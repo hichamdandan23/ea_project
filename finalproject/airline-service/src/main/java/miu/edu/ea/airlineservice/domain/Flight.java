@@ -1,10 +1,36 @@
 package miu.edu.ea.airlineservice.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 public class Flight {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String number;
+    private Integer capacity;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
+
+    @ManyToOne
+    @JoinColumn(name = "departure_id")
+    private Airport departure;
+
+    @ManyToOne
+    @JoinColumn(name = "arrival_id")
+    private Airport arrival;
+
+    @ManyToOne
+    @JoinColumn(name="airline_id")
+    private Airline airline;
+
+    @ManyToMany(mappedBy = "flights")
+    private List<Reservation> reservations;
+
     public Flight() {
     }
 
@@ -56,21 +82,27 @@ public class Flight {
         this.reservations = reservations;
     }
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    public LocalDateTime getDepartureTime() {
+        return departureTime;
+    }
 
-    private String number;
-    private Integer capacity;
+    public void setDepartureTime(LocalDateTime departureTime) {
+        this.departureTime = departureTime;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "departure_id")
-    private Airport departure;
+    public LocalDateTime getArrivalTime() {
+        return arrivalTime;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "arrival_id")
-    private Airport arrival;
+    public void setArrivalTime(LocalDateTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
 
-    @ManyToMany(mappedBy = "flights")
-    private List<Reservation> reservations;
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
 }
