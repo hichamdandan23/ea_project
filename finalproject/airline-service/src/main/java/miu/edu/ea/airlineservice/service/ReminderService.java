@@ -26,6 +26,6 @@ public class ReminderService {
     }
 
     public void sendFlightReminder() {
-        send();
+
     }
 }
