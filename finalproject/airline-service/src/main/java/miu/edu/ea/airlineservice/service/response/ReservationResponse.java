@@ -9,6 +9,7 @@ public class ReservationResponse {
     private ReservationStatus reservationStatus;
     private String passengerId;
     private String createdById;
+    private String reservationCode;
     private List<FlightResponse> flights;
 
     public Long getId() {
@@ -49,5 +50,13 @@ public class ReservationResponse {
 
     public void setFlights(List<FlightResponse> flights) {
         this.flights = flights;
+    }
+
+    public String getReservationCode() {
+        return reservationCode;
+    }
+
+    public void setReservationCode(String reservationCode) {
+        this.reservationCode = reservationCode;
     }
 }

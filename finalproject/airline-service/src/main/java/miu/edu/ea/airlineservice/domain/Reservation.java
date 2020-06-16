@@ -26,6 +26,14 @@ public class Reservation {
     public Reservation() {
     }
 
+    public Reservation(String reservationCode, ReservationStatus reservationStatus, String passengerId, String createdById, List<Flight> flights){
+        this.reservationCode = reservationCode;
+        this.reservationStatus = reservationStatus;
+        this.passengerId = passengerId;
+        this.createdById = createdById;
+        this.flights = flights;
+    }
+
     public Long getId() {
         return id;
     }

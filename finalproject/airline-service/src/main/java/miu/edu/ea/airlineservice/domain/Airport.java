@@ -20,6 +20,12 @@ public class Airport {
     public Airport() {
     }
 
+    public Airport (String code, String name, Address address) {
+        this.code = code;
+        this.name = name;
+        this.address = address;
+    }
+
     public Long getId() {
         return id;
     }

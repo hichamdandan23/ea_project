@@ -14,6 +14,13 @@ public class Airline {
     @Column(length = 2000, table = "airline_history")
     private String history;
 
+    public Airline(Long id, String code, String name, String history) {
+        this.code = code;
+        this.history = history;
+        this.name = name;
+        this.history = history;
+    }
+
 
     public Airline() {
     }
