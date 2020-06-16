@@ -25,7 +25,7 @@ public class EmailServiceApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(EmailServiceApplication.class, args);
-        testSendEmail(context);
+        //testSendEmail(context);
     }
 
     static private void testSendEmail(ConfigurableApplicationContext context) {

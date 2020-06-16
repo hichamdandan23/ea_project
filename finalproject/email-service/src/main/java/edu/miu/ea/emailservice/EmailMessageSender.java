@@ -13,8 +13,6 @@ public class EmailMessageSender {
     @Autowired
     private KafkaTemplate<String, Email> kafkaTemplate;
 
-    private Gson gson = new GsonBuilder().create();
-
     @Value("${email-service.message-queue.name}")
     private String topicName;
 
