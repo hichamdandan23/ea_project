@@ -13,20 +13,41 @@ spring:
             - Path=/user/admin/**
           filters:
             - RewritePath=/user/(?<segment>.*), /$\{segment}
-            - UserAuth=true
+            - Auth=admin
         - id: user-service-edit
           uri: lb://user-service
           predicates:
             - Path=/user/edit
           filters:
             - RewritePath=/user/(?<segment>.*), /$\{segment}
-            - UserAuth=true
+            - Auth=passenger
         - id: user-service
           uri: lb://user-service
           predicates:
             - Path=/user/**
           filters:
             - RewritePath=/user/(?<segment>.*), /$\{segment}
+        - id: airline-service
+          uri: lb://airline-service
+          predicates:
+            - Path=/airline/admin/**
+          filters:
+            - RewritePath=/airline/(?<segment>.*), /$\{segment}
+            - Auth=admin
+        - id: airline-service
+          uri: lb://airline-service
+          predicates:
+            - Path=/airline/passenger/**
+          filters:
+            - RewritePath=/airline/(?<segment>.*), /$\{segment}
+            - Auth=passenger
+        - id: airline-service
+          uri: lb://airline-service
+          predicates:
+            - Path=/airline/agent/**
+          filters:
+            - RewritePath=/airline/(?<segment>.*), /$\{segment}
+            - Auth=agent
 eureka:
   client:
     serviceUrl:
