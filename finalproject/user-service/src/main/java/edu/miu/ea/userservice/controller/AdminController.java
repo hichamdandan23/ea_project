@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/administrator")
-public class AuthAdminController {
+public class AdminController {
     @Autowired
     private AdminService adminService;
-    private static final Log logger = LogFactory.getLog(AuthUserController.class);
+    private static final Log logger = LogFactory.getLog(UserController.class);
 
 
     @PostMapping("/token")

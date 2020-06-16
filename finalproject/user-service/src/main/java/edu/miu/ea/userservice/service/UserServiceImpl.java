@@ -92,6 +92,8 @@ public class UserServiceImpl extends BaseReadWriteServiceImpl<UserResponse, User
             return user;
         } catch (JWTVerificationException exception) {
             return null;
+        } catch (Exception e) {
+            return null;
         }
     }
 

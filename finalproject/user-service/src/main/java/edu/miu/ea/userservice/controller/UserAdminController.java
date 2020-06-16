@@ -19,7 +19,7 @@ import java.util.EnumMap;
 
 @RestController
 @RequestMapping("/admin/user")
-public class AdminUserController extends BaseReadWriteController<UserResponse, User, Long> {
+public class UserAdminController extends BaseReadWriteController<UserResponse, User, Long> {
     @Autowired
     private UserService userService;
 

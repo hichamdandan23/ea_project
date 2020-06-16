@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/agent")
-public class AuthAgentController {
+public class AgentController {
     @Autowired
     private AgentService agentService;
 
-    private static final Log logger = LogFactory.getLog(AuthAgentController.class);
+    private static final Log logger = LogFactory.getLog(AgentController.class);
 
     @PostMapping("/token")
     public AgentAuthResponse token(AgentAuthRequest request) {

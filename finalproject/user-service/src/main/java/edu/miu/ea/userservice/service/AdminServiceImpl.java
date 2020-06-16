@@ -90,6 +90,8 @@ public class AdminServiceImpl extends BaseReadWriteServiceImpl<AdminResponse, Ad
             return admin;
         } catch (JWTVerificationException exception) {
             return null;
+        } catch (Exception e) {
+            return null;
         }
     }
 }

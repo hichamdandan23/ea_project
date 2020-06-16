@@ -8,18 +8,18 @@ import edu.miu.ea.userservice.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.EnumMap;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/passenger")
-public class AuthUserController {
+public class UserController {
     private UserService userService;
-    private static final Log logger = LogFactory.getLog(AuthUserController.class);
+    private static final Log logger = LogFactory.getLog(UserController.class);
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -121,5 +121,24 @@ public class AuthUserController {
         UserEditProfileResponse userEditProfileResponse = new UserEditProfileResponse(Code.Success, "");
 
         return userEditProfileResponse;
+    }
+
+    @PostMapping("/detail")
+    public UserDetailResponse detail(@RequestBody UserDetailRequest request) {
+        List<Long> userIds = request.getUserIds();
+        List<UserResponse> userResponses = userIds.stream().map(userId -> {
+            try {
+                return userService.findById(userId);
+            } catch (Exception e) {
+                return null;
+            }
+        }).filter(Objects::nonNull).collect(Collectors.toList());
+
+        UserDetailResponse userDetailResponse = new UserDetailResponse();
+        userDetailResponse.setUserResponses(userResponses);
+        userDetailResponse.setCode(Code.Success);
+        userDetailResponse.setMsg("");
+
+        return  userDetailResponse;
     }
 }

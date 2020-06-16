@@ -22,7 +22,7 @@ import java.util.EnumMap;
 
 @RestController
 @RequestMapping("/admin/agent")
-public class AdminAgentController extends BaseReadWriteController<AgentResponse, Agent, Long> {
+public class AgentAdminController extends BaseReadWriteController<AgentResponse, Agent, Long> {
     @Autowired
     private AgentService agentService;
 

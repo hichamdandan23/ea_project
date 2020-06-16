@@ -90,6 +90,8 @@ public class AgentServiceImpl extends BaseReadWriteServiceImpl<AgentResponse, Ag
             return agent;
         } catch (JWTVerificationException exception) {
             return null;
+        } catch (Exception e) {
+            return null;
         }
     }
 }
