@@ -19,6 +19,9 @@ public class TicketResponse {
 
     private String reservationCode;
 
+    public TicketResponse() {
+    }
+
     public TicketResponse(Long id, String number, LocalDate flightDate, String passengerId, FlightResponse flight, String reservationCode) {
         this.id = id;
         this.number = number;
