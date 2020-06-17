@@ -20,7 +20,7 @@ public class FlightController {
     }
 
 
-    @GetMapping
+    @GetMapping(path = {"/passenger/flights", "/agent/flights"})
     public List<Flight> getFlights(@RequestParam("acode") String acode, @RequestParam("dcode") String dcode) {
         return flightService.findDepartureByCodeOrArrivalByCode(dcode, acode);
     }
