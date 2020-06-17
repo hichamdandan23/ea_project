@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Reservation {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 6)
     private String reservationCode;
@@ -21,9 +21,18 @@ public class Reservation {
     @JoinTable(
             joinColumns = {@JoinColumn(name = "flight_id")},
             inverseJoinColumns = {@JoinColumn(name = "reservation_id")})
-    private List<Flight> flights;
+    private List<Flight> flights = new ArrayList<>();
+    private boolean reminded;
 
     public Reservation() {
+    }
+
+    public Reservation(String reservationCode, ReservationStatus reservationStatus, String passengerId, String createdById, List<Flight> flights){
+        this.reservationCode = reservationCode;
+        this.reservationStatus = reservationStatus;
+        this.passengerId = passengerId;
+        this.createdById = createdById;
+        this.flights = flights;
     }
 
     public Long getId() {
@@ -80,5 +89,23 @@ public class Reservation {
 
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    public void setReminded(boolean reminded) {
+        this.reminded = reminded;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", reservationCode='" + reservationCode + '\'' +
+                ", reservationStatus=" + reservationStatus +
+                ", passengerId='" + passengerId + '\'' +
+                ", createdById='" + createdById + '\'' +
+                ", tickets=" + tickets +
+                ", flights=" + flights +
+                ", reminded=" + reminded +
+                '}';
     }
 }

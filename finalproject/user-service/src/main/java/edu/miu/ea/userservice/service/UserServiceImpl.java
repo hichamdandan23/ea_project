@@ -9,7 +9,9 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import edu.miu.ea.commons.service.BaseReadWriteServiceImpl;
 import edu.miu.ea.contracts.Code;
 import edu.miu.ea.contracts.user.UserResponse;
+import edu.miu.ea.userservice.dao.RoleRepository;
 import edu.miu.ea.userservice.dao.UserRepository;
+import edu.miu.ea.userservice.domain.Role;
 import edu.miu.ea.userservice.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,20 +19,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.EnumMap;
+import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
 public class UserServiceImpl extends BaseReadWriteServiceImpl<UserResponse, User, Long> implements UserService {
+    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Value("${user-service.token-secret}")
     private String tokenSecret;
-
-    @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Override
     public EnumMap<ItemType, Object> create(User user) {
@@ -46,6 +50,7 @@ public class UserServiceImpl extends BaseReadWriteServiceImpl<UserResponse, User
             return result;
         }
 
+        user.setCreatedAt(LocalDateTime.now());
         userRepository.save(user);
         result.put(ItemType.User, user);
 
@@ -100,5 +105,31 @@ public class UserServiceImpl extends BaseReadWriteServiceImpl<UserResponse, User
     @Override
     public boolean editProfile(String company, String website) {
         return false;
+    }
+
+    @Override
+    public boolean setRole(Long userId, List<String> roles) {
+        try {
+            User user = userRepository.findById(userId).orElse(null);
+            if(user == null) {
+                return false;
+            }
+
+            user.getRoles().clear();
+
+            for (String roleStr: roles) {
+                Role role = roleRepository.getRoleByName(roleStr);
+                if(role != null) {
+                    user.getRoles().add(role);
+                }
+            }
+
+            userRepository.save(user);
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 }

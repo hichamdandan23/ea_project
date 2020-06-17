@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
@@ -144,5 +145,15 @@ public class UserController {
         userDetailResponse.setMsg("");
 
         return  userDetailResponse;
+    }
+
+    @PostMapping("/admin/user/{userId}/roles/{rolestr}")
+    public Response roles(@PathVariable Long userId, @PathVariable String rolestr) {
+        List<String> roles = Arrays.asList(rolestr.split(","));
+        boolean result = userService.setRole(userId, roles);
+        if(result) {
+            return new Response(Code.Success, "");
+        }
+        return new Response(Code.ParamError, "Param error");
     }
 }

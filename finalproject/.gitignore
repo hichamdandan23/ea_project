@@ -1,4 +1,6 @@
+*.iml
 .idea/
+application.yml
 target/
 .DS_Store
 

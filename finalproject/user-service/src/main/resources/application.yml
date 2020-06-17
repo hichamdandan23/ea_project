@@ -5,10 +5,10 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:mariadb://localhost/ea
+    url: jdbc:mysql://localhost/user-service
     username: root
-    password: root
-    driverClassName: org.mariadb.jdbc.Driver
+    password: my-secret-pw
+    driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
     hibernate:
@@ -18,7 +18,7 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MariaDBDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
   devtools:
     livereload:
       enabled: false

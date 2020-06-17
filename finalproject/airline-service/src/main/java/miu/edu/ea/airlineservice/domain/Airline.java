@@ -6,13 +6,20 @@ import javax.persistence.*;
 @SecondaryTable(name="airline_history")
 public class Airline {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
     private String name;
 
     @Column(length = 2000, table = "airline_history")
     private String history;
+
+    public Airline(Long id, String code, String name, String history) {
+        this.code = code;
+        this.history = history;
+        this.name = name;
+        this.history = history;
+    }
 
 
     public Airline() {
