@@ -92,7 +92,7 @@ public class AdminController {
         return new ResponseEntity<Airline>(modded, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @DeleteMapping("flight/delete/{id}")
+    @DeleteMapping("airline/delete/{id}")
     public HttpStatus deleteAirlineByID (@PathVariable Long id){
         airlineService.deleteById(id);
         return  HttpStatus.OK;
