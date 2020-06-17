@@ -6,14 +6,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    /*
-    @Query("from Reservation r join r.flights f order by f.departureTime asc limit 1")
+    @Query("select distinct r from Reservation r join r.flights f "
+            +"where r.reservationStatus='CONFIRMED'"
+            +" and r.reminded=false"
+            +" and f.departureTime < ?#{@ReservationRepository.in24Hours()}")
     public List<Reservation> findReservationsNeedRemind();
-     */
+
+    default Instant in24Hours() {
+        return Instant.now().plus(24, ChronoUnit.HOURS);
+    }
 }

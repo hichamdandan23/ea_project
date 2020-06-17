@@ -22,6 +22,7 @@ public class Reservation {
             joinColumns = {@JoinColumn(name = "flight_id")},
             inverseJoinColumns = {@JoinColumn(name = "reservation_id")})
     private List<Flight> flights;
+    private boolean reminded;
 
     public Reservation() {
     }
@@ -88,5 +89,23 @@ public class Reservation {
 
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    public void setReminded(boolean reminded) {
+        this.reminded = reminded;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", reservationCode='" + reservationCode + '\'' +
+                ", reservationStatus=" + reservationStatus +
+                ", passengerId='" + passengerId + '\'' +
+                ", createdById='" + createdById + '\'' +
+                ", tickets=" + tickets +
+                ", flights=" + flights +
+                ", reminded=" + reminded +
+                '}';
     }
 }
