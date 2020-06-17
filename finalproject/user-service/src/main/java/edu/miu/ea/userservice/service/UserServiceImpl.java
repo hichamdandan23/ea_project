@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Set;
@@ -49,6 +50,7 @@ public class UserServiceImpl extends BaseReadWriteServiceImpl<UserResponse, User
             return result;
         }
 
+        user.setCreatedAt(LocalDateTime.now());
         userRepository.save(user);
         result.put(ItemType.User, user);
 
