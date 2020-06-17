@@ -1,6 +1,7 @@
 package miu.edu.ea.airlineservice.service;
 
 import miu.edu.ea.airlineservice.domain.*;
+import miu.edu.ea.airlineservice.exception.ApiCustomException;
 import miu.edu.ea.airlineservice.repository.FlightRepository;
 import miu.edu.ea.airlineservice.repository.TicketNumberRepository;
 import miu.edu.ea.airlineservice.repository.ReservationRepository;
@@ -39,52 +40,44 @@ public class ReservationServiceImpl implements ReservationService {
 
 
     @Override
-    public ReservationResponse createReservation(ReservationRequest reservationRequest, String createdById){
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public ReservationResponse createReservation(ReservationRequest reservationRequest, String createdById) {
         Reservation reservation = new Reservation();
         reservation.setReservationStatus(ReservationStatus.PENDING);
         // load all flights
-        for(Long i : reservationRequest.getFlightIds()){
-            reservation.getFlights().add(flightRepository.findById(i).orElseThrow(()-> new RuntimeException("Flight not found")));
+        for (Long i : reservationRequest.getFlightIds()) {
+            // load flight
+            Flight flight = flightRepository.findById(i).orElseThrow(() -> new ApiCustomException("Flight with id " + i +" is not found"));
+            // check if flight has space
+            if( !(flightRepository.countReservations(i) < flight.getCapacity()) )
+                throw new ApiCustomException("Flight with id " + flight.getId() + " is full!");
+            reservation.getFlights().add(flight);
         }
         reservation.setCreatedById(createdById);
         reservation.setPassengerId(reservationRequest.getPassengerId());
-        reservation.setReservationCode(UUID.randomUUID().toString().substring(0,4).toUpperCase());
+        reservation.setReservationCode(UUID.randomUUID().toString().substring(0, 4).toUpperCase());
         return ReservationMapper.mapToReservationResponse(reservationRepository.save(reservation));
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
-    public String getNextTicketNumber(){
-        TicketNumber flightNumber = null;
-        Optional<TicketNumber> resCode = ticketNumberRepository.findById(1);
-        if(resCode.isPresent()){
-            flightNumber = resCode.get();
-        } else
-            flightNumber = new TicketNumber(1, "00000000000000000000");
-
-        BigInteger b = BigInteger.valueOf(Long.parseLong(flightNumber.getCode()));
-
-        flightNumber.setCode(padLeftZeros(b.add(BigInteger.ONE).toString(), 20));
-        return ticketNumberRepository.save(flightNumber).getCode();
-    }
 
     @Override
-    public void cancelReservation(long reservationId){
+    public void cancelReservation(long reservationId) {
         Reservation reservation = reservationRepository.findById(reservationId)
-                                        .orElseThrow(()->new RuntimeException("Reservation not found"));
-        if(reservation.getReservationStatus().equals(ReservationStatus.PENDING))
+                .orElseThrow(() -> new ApiCustomException("Reservation with id "+reservationId+" is not found"));
+        if (reservation.getReservationStatus().equals(ReservationStatus.PENDING))
             reservation.setReservationStatus(ReservationStatus.CANCELLED);
         else
-            throw new IllegalStateException("Reservation can't be cancelled");
+            throw new ApiCustomException("Only Reservations with PENDING state can be cancelled");
         reservationRepository.save(reservation);
     }
 
     @Override
-    public List<TicketResponse> confirmReservation(long reservationId){
+    public List<TicketResponse> confirmReservation(long reservationId) {
         List<Ticket> tickets = new ArrayList<>();
         //load reservation
         Reservation reservation = reservationRepository.findById(reservationId)
-                .orElseThrow(()->new RuntimeException("Reservation not found"));
-        if(reservation.getReservationStatus().equals(ReservationStatus.PENDING)){
+                .orElseThrow(() -> new ApiCustomException("Reservation with id "+reservationId+" is not found"));
+        if (reservation.getReservationStatus().equals(ReservationStatus.PENDING)) {
             // create tickets for each flight in the reservation
             tickets = reservation.getFlights().stream().map(f -> {
                 Ticket ticket = new Ticket();
@@ -100,10 +93,24 @@ public class ReservationServiceImpl implements ReservationService {
             // update reservation status
             reservation.setReservationStatus(ReservationStatus.CONFIRMED);
             reservationRepository.save(reservation);
-        }
-        else
-            throw new IllegalStateException("Reservation can't be confirmed");
-        return tickets.stream().map(ticket-> TicketMapper.mapToTicketResponse(ticket)).collect(Collectors.toList());
+        } else
+            throw new ApiCustomException("Only Reservations with PENDING state can be confirmed");
+        return tickets.stream().map(ticket -> TicketMapper.mapToTicketResponse(ticket)).collect(Collectors.toList());
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
+    public String getNextTicketNumber() {
+        TicketNumber flightNumber = null;
+        Optional<TicketNumber> resCode = ticketNumberRepository.findById(1);
+        if (resCode.isPresent()) {
+            flightNumber = resCode.get();
+        } else
+            flightNumber = new TicketNumber(1, "00000000000000000000");
+
+        BigInteger b = BigInteger.valueOf(Long.parseLong(flightNumber.getCode()));
+
+        flightNumber.setCode(padLeftZeros(b.add(BigInteger.ONE).toString(), 20));
+        return ticketNumberRepository.save(flightNumber).getCode();
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)
