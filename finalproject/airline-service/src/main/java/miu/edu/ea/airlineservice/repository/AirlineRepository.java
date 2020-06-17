@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface AirlineRepository extends JpaRepository<Airline, Long> {
 
-    @Query("SELECT a FROM Airline a WHERE a.code = :airline_code")
-    List<Airline> findByCode(@Param("airline_code") String code);
+    @Query("SELECT a FROM Flight f join f.airline a join f.departure ap WHERE ap.code = :airport_code")
+    List<Airline> findByAirportCode(@Param("airport_code") String code);
 
 }
