@@ -5,11 +5,10 @@ import miu.edu.ea.airlineservice.service.ReservationServiceImpl;
 import miu.edu.ea.airlineservice.service.request.ReservationRequest;
 import miu.edu.ea.airlineservice.service.response.ReservationResponse;
 import miu.edu.ea.airlineservice.service.response.TicketResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +20,7 @@ public class ReservationController {
     }
 
     @PostMapping(path = {"/admin/reservations", "/passenger/reservations", "/agent/reservations"})
-    public ReservationResponse createReservation(@Validated @RequestBody ReservationRequest reservationRequest, @RequestHeader(value = "USER_ID", defaultValue = "0") String userId){
+    public ReservationResponse createReservation(@Valid @RequestBody ReservationRequest reservationRequest, @RequestHeader(value = "USER_ID", defaultValue = "0") String userId){
         return reservationService.createReservation(reservationRequest, userId);
     }
 

@@ -1,9 +1,6 @@
 package miu.edu.ea.airlineservice.service;
 
-import miu.edu.ea.airlineservice.domain.Reservation;
-import miu.edu.ea.airlineservice.domain.TicketNumber;
-import miu.edu.ea.airlineservice.domain.ReservationStatus;
-import miu.edu.ea.airlineservice.domain.Ticket;
+import miu.edu.ea.airlineservice.domain.*;
 import miu.edu.ea.airlineservice.repository.FlightRepository;
 import miu.edu.ea.airlineservice.repository.TicketNumberRepository;
 import miu.edu.ea.airlineservice.repository.ReservationRepository;
@@ -46,7 +43,9 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation reservation = new Reservation();
         reservation.setReservationStatus(ReservationStatus.PENDING);
         // load all flights
-        reservation.setFlights(flightRepository.findAllById(reservationRequest.getFlightIds()));
+        for(Long i : reservationRequest.getFlightIds()){
+            reservation.getFlights().add(flightRepository.findById(i).orElseThrow(()-> new RuntimeException("Flight not found")));
+        }
         reservation.setCreatedById(createdById);
         reservation.setPassengerId(reservationRequest.getPassengerId());
         reservation.setReservationCode(UUID.randomUUID().toString().substring(0,4).toUpperCase());
@@ -60,11 +59,11 @@ public class ReservationServiceImpl implements ReservationService {
         if(resCode.isPresent()){
             flightNumber = resCode.get();
         } else
-            flightNumber = new TicketNumber(1, "00000000000000000001");
+            flightNumber = new TicketNumber(1, "00000000000000000000");
 
         BigInteger b = BigInteger.valueOf(Long.parseLong(flightNumber.getCode()));
-        b.add(BigInteger.ONE);
-        flightNumber.setCode(padLeftZeros(b.toString(), 20));
+
+        flightNumber.setCode(padLeftZeros(b.add(BigInteger.ONE).toString(), 20));
         return ticketNumberRepository.save(flightNumber).getCode();
     }
 
@@ -93,12 +92,14 @@ public class ReservationServiceImpl implements ReservationService {
                 ticket.setFlightDate(f.getDepartureTime().toLocalDate());
                 ticket.setNumber(getNextTicketNumber()); // how to generate ticket number
                 ticket.setPassengerId(reservation.getPassengerId());
+                ticket.setReservation(reservation);
                 return ticket;
             }).collect(Collectors.toList());
             // persist tickets
-            tickets.forEach(ticket -> ticketRepository.save(ticket));
+            ticketRepository.saveAll(tickets);
             // update reservation status
             reservation.setReservationStatus(ReservationStatus.CONFIRMED);
+            reservationRepository.save(reservation);
         }
         else
             throw new IllegalStateException("Reservation can't be confirmed");
