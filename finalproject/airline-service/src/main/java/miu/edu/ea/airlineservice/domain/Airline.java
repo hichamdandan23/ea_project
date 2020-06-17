@@ -1,14 +1,27 @@
 package miu.edu.ea.airlineservice.domain;
 
-import org.springframework.stereotype.Component;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@SecondaryTable(name="airline_history")
 public class Airline {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String name;
+
+    @Column(length = 2000, table = "airline_history")
+    private String history;
+
+    public Airline(Long id, String code, String name, String history) {
+        this.code = code;
+        this.history = history;
+        this.name = name;
+        this.history = history;
+    }
+
+
     public Airline() {
     }
 
@@ -44,12 +57,4 @@ public class Airline {
         this.history = history;
     }
 
-    @Id
-    @GeneratedValue
-    private Long id;
-    private String code;
-    private String name;
-
-    @Column(length = 2000)
-    private String history;
 }

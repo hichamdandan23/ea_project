@@ -4,7 +4,26 @@ import javax.persistence.*;
 
 @Entity
 public class Airport {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 3, nullable = false)
+    private String code;
+
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     public Airport() {
+    }
+
+    public Airport (String code, String name, Address address) {
+        this.code = code;
+        this.name = name;
+        this.address = address;
     }
 
     public Long getId() {
@@ -39,16 +58,4 @@ public class Airport {
         this.address = address;
     }
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @Column(length = 3, nullable = false)
-    private String code;
-
-    private String name;
-
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
 }

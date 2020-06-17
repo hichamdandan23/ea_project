@@ -23,6 +23,31 @@ spring:
   devtools:
     livereload:
       enabled: false
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: email-sending
+      auto-offset-reset: latest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: edu.miu.ea.contracts.email.Email
+            trusted:
+              packages: edu.miu.ea.contracts.email
+    producer:
+      retries: 0
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            add:
+              type:
+                headers: false
 
 eureka:
   client:
@@ -31,3 +56,6 @@ eureka:
 
 user-service:
   service-name: user-service
+email-service:
+  message-queue:
+    name: ea

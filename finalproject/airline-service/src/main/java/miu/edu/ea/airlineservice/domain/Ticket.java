@@ -5,6 +5,23 @@ import java.time.LocalDate;
 
 @Entity
 public class Ticket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String number;
+    private LocalDate flightDate;
+
+    private String passengerId;
+
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
+    private Flight flight;
+
+    @ManyToOne
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
+
     public Ticket() {
     }
 
@@ -24,14 +41,6 @@ public class Ticket {
         this.number = number;
     }
 
-    public String getReservationCode() {
-        return reservationCode;
-    }
-
-    public void setReservationCode(String reservationCode) {
-        this.reservationCode = reservationCode;
-    }
-
     public LocalDate getFlightDate() {
         return flightDate;
     }
@@ -40,12 +49,12 @@ public class Ticket {
         this.flightDate = flightDate;
     }
 
-    public Passenger getPassenger() {
-        return passenger;
+    public String getPassengerId() {
+        return passengerId;
     }
 
-    public void setPassenger(Passenger passenger) {
-        this.passenger = passenger;
+    public void setPassengerId(String passengerId) {
+        this.passengerId = passengerId;
     }
 
     public Flight getFlight() {
@@ -56,19 +65,11 @@ public class Ticket {
         this.flight = flight;
     }
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    public Reservation getReservation() {
+        return reservation;
+    }
 
-    private String number;
-    private String reservationCode;
-    private LocalDate flightDate;
-
-    @ManyToOne
-    @JoinColumn(name = "passenger_id")
-    private Passenger passenger;
-
-    @ManyToOne
-    @JoinColumn(name = "flight_id")
-    private Flight flight;
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
 }

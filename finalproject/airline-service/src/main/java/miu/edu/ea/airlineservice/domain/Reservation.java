@@ -1,11 +1,38 @@
 package miu.edu.ea.airlineservice.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Reservation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(length = 6)
+    private String reservationCode;
+    @Enumerated(EnumType.STRING)
+    private ReservationStatus reservationStatus;
+    private String passengerId;
+    private String createdById;
+    @OneToMany(mappedBy = "reservation")
+    private List<Ticket> tickets = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "flight_id")},
+            inverseJoinColumns = {@JoinColumn(name = "reservation_id")})
+    private List<Flight> flights;
+    private boolean reminded;
+
     public Reservation() {
+    }
+
+    public Reservation(String reservationCode, ReservationStatus reservationStatus, String passengerId, String createdById, List<Flight> flights){
+        this.reservationCode = reservationCode;
+        this.reservationStatus = reservationStatus;
+        this.passengerId = passengerId;
+        this.createdById = createdById;
+        this.flights = flights;
     }
 
     public Long getId() {
@@ -16,12 +43,12 @@ public class Reservation {
         this.id = id;
     }
 
-    public Passenger getPassenger() {
-        return passenger;
+    public ReservationStatus getReservationStatus() {
+        return reservationStatus;
     }
 
-    public void setPassenger(Passenger passenger) {
-        this.passenger = passenger;
+    public void setReservationStatus(ReservationStatus reservationStatus) {
+        this.reservationStatus = reservationStatus;
     }
 
     public List<Flight> getFlights() {
@@ -32,17 +59,53 @@ public class Reservation {
         this.flights = flights;
     }
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    public String getPassengerId() {
+        return passengerId;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "passenger_id")
-    private Passenger passenger;
+    public void setPassengerId(String passengerId) {
+        this.passengerId = passengerId;
+    }
 
-    @ManyToMany
-    @JoinTable(
-            joinColumns = {@JoinColumn(name = "flight_id")},
-            inverseJoinColumns = {@JoinColumn(name = "reservation_id")})
-    private List<Flight> flights;
+    public String getCreatedById() {
+        return createdById;
+    }
+
+    public void setCreatedById(String createdById) {
+        this.createdById = createdById;
+    }
+
+    public String getReservationCode() {
+        return reservationCode;
+    }
+
+    public void setReservationCode(String reservationCode) {
+        this.reservationCode = reservationCode;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public void setReminded(boolean reminded) {
+        this.reminded = reminded;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", reservationCode='" + reservationCode + '\'' +
+                ", reservationStatus=" + reservationStatus +
+                ", passengerId='" + passengerId + '\'' +
+                ", createdById='" + createdById + '\'' +
+                ", tickets=" + tickets +
+                ", flights=" + flights +
+                ", reminded=" + reminded +
+                '}';
+    }
 }

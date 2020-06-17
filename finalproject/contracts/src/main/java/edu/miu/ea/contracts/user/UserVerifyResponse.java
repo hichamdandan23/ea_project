@@ -4,6 +4,7 @@ import edu.miu.ea.contracts.Code;
 import edu.miu.ea.contracts.Response;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class UserVerifyResponse extends Response {
     public UserVerifyResponse() {
@@ -49,8 +50,17 @@ public class UserVerifyResponse extends Response {
         this.createdAt = createdAt;
     }
 
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
     private Long id;
     private String email;
+    private List<String> roles;
     private LocalDateTime disabledAt;
     private LocalDateTime createdAt;
 }
