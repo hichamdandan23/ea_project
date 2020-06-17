@@ -18,7 +18,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
             +"where r.reservationStatus='CONFIRMED'"
             +" and r.reminded=false"
             +" and f.departureTime < ?#{@ReservationRepository.in24Hours()}")
-    public List<Reservation> findReservationsNeedRemind();
+    List<Reservation> findReservationsNeedRemind();
 
     default Instant in24Hours() {
         return Instant.now().plus(24, ChronoUnit.HOURS);
