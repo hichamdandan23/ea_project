@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class UserResponse implements Serializable {
+    public UserResponse() {}
     public UserResponse(Long id, String email, String firstName, String lastName, LocalDate dateOfBirth, String street, String city, String state, String zip, LocalDateTime disabledAt, LocalDateTime createdAt) {
         this.id = id;
         this.email = email;

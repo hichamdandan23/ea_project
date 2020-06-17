@@ -21,6 +21,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -39,7 +41,7 @@ public class ReminderService {
     private EurekaClient eurekaClient;
 
     @Autowired
-    ReservationRepository reservationRepository;
+    private ReservationRepository reservationRepository;
 
     @Value("${user-service.service-name}")
     private String userServiceName;
@@ -53,16 +55,18 @@ public class ReminderService {
         kafkaTemplate.send(topicName, email);
     }
 
-    private HttpEntity<Object> createHttpEntity(UserDetailRequest userDetailRequest) {
+    private HttpEntity<String> createHttpEntity(Long userId) {
+        String json = "{\"userIds\":["+userId.toString()+"]}";
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        return new HttpEntity<>(userDetailRequest, headers);
+        return new HttpEntity<String>(json, headers);
     }
 
     public void sendFlightReminder() {
-        List<Reservation> reservations = reservationRepository.findReservationsNeedRemind();
+        LocalDateTime time = LocalDateTime.now().plusHours(24);
+        List<Reservation> reservations = reservationRepository.findReservationsNeedRemind(time);
         for (Reservation reservation :reservations) {
             log.info(reservation.toString());
             Flight flight = reservation.getFlights().stream()
@@ -71,11 +75,10 @@ public class ReminderService {
             if(flight != null) {
                 String url = eurekaClient.getNextServerFromEureka(userServiceName, false)
                         .getHomePageUrl() + "/detail";
-                UserDetailRequest userDetailRequest = new UserDetailRequest();
                 UserDetailResponse userDetailResponse = restTemplate.exchange(
                         url,
                         HttpMethod.POST,
-                        createHttpEntity(userDetailRequest),
+                        createHttpEntity(Long.parseLong(reservation.getPassengerId())),
                         UserDetailResponse.class
                 ).getBody();
 

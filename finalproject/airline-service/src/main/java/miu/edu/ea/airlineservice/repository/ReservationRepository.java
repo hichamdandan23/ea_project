@@ -14,13 +14,11 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    @Query("select distinct r from Reservation r join r.flights f "
-            +"where r.reservationStatus='CONFIRMED'"
-            +" and r.reminded=false"
-            +" and f.departureTime < ?#{@ReservationRepository.in24Hours()}")
-    List<Reservation> findReservationsNeedRemind();
 
-    default Instant in24Hours() {
-        return Instant.now().plus(24, ChronoUnit.HOURS);
-    }
+    @Query("select distinct r from Reservation r join r.flights f"
+            +" where r.reservationStatus='CONFIRMED'"
+            +" and r.reminded=false"
+            +" and f.departureTime < ?1")
+    List<Reservation> findReservationsNeedRemind(LocalDateTime time);
+
 }

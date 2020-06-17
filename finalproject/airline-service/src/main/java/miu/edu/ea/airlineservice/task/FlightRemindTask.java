@@ -15,8 +15,9 @@ public class FlightRemindTask {
 
     private static final Logger log = LoggerFactory.getLogger(FlightRemindTask.class);
 
-    @Scheduled(fixedDelay = 1000, initialDelay = 1000)
+    @Scheduled(fixedDelay = 1000000, initialDelay = 5000)
     public void flightRemind() {
+        log.info("FlightRemindTask");
         reminderService.sendFlightReminder();
     }
 }

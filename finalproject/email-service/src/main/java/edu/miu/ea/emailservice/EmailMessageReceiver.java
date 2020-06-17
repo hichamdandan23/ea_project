@@ -16,6 +16,8 @@ public class EmailMessageReceiver {
 
     @KafkaListener(topics = {"${email-service.message-queue.name}"})
     public void listen(Email email) {
-        log.info("Email send to: " +email.getTarget() + ", title=" + email.getTitle());
+        log.info("Email send to: " +email.getTarget());
+        log.info("\ttitle=" + email.getTitle());
+        log.info("\tbody=" + email.getBody());
     }
 }
