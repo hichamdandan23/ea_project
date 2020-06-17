@@ -5,21 +5,20 @@ spring:
   application:
     name: airline-service
   datasource:
-    url: jdbc:mariadb://localhost/ea
+    url: jdbc:mysql://localhost/airline-service
     username: root
     password: root
     driverClassName: org.mariadb.jdbc.Driver
-
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MariaDBDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
   devtools:
     livereload:
       enabled: false

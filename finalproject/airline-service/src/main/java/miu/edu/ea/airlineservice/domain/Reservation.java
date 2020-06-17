@@ -21,7 +21,7 @@ public class Reservation {
     @JoinTable(
             joinColumns = {@JoinColumn(name = "flight_id")},
             inverseJoinColumns = {@JoinColumn(name = "reservation_id")})
-    private List<Flight> flights;
+    private List<Flight> flights = new ArrayList<>();
     private boolean reminded;
 
     public Reservation() {
