@@ -142,7 +142,7 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name="role_id")}

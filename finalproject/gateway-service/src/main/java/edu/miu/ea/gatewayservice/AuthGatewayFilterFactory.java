@@ -20,13 +20,14 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ServerWebExchange;
 
+import javax.management.relation.Role;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class UserAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<UserAuthGatewayFilterFactory.Config> {
-    private static final Log logger = LogFactory.getLog(UserAuthGatewayFilterFactory.class);
+public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthGatewayFilterFactory.Config> {
+    private static final Log logger = LogFactory.getLog(AuthGatewayFilterFactory.class);
 
     private static final String AUTHORIZE_TOKEN = "USER_TOKEN";
     private static final String USER_ID = "USER_ID";
@@ -40,7 +41,7 @@ public class UserAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<U
     @Autowired
     private EurekaClient eurekaClient;
 
-    public UserAuthGatewayFilterFactory() {
+    public AuthGatewayFilterFactory() {
         super(Config.class);
         logger.info("Loaded GatewayFilterFactory [Authorize]");
     }
@@ -53,10 +54,6 @@ public class UserAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<U
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
-            if (!config.isEnabled()) {
-                return chain.filter(exchange);
-            }
-
             ServerHttpRequest request = exchange.getRequest();
             HttpHeaders headers = request.getHeaders();
             String token = headers.getFirst(AUTHORIZE_TOKEN);
@@ -80,11 +77,19 @@ public class UserAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<U
             ).getBody();
 
             if (userVerifyResponse.getCode() == Code.Success) {
+                List<String> roles = userVerifyResponse.getRoles();
+                Integer num = roles.stream()
+                        .map(role -> role.equals(config.role)? 1 : 0)
+                        .reduce((sum, i)->sum+i)
+                        .orElse(0);
+                if(num == 0) {
+                    return chain.filter(exchange);
+                }
+
                 ServerHttpRequest host = exchange.getRequest().mutate()
                         .header(USER_ID, userVerifyResponse.getId().toString())
                         .header(USER_EMAIL, userVerifyResponse.getEmail())
-                        .header(USER_ROLE,
-                                userVerifyResponse.getRoles().stream().collect(Collectors.joining(",")))
+                        .header(USER_ROLE, roles.stream().collect(Collectors.joining(",")))
                         .build();
                 ServerWebExchange build = exchange.mutate().request(host).build();
                 return chain.filter(build);
@@ -116,17 +121,17 @@ public class UserAuthGatewayFilterFactory extends AbstractGatewayFilterFactory<U
     }
 
     public static class Config {
-        private boolean enabled;
+        private String role;
 
         public Config() {
         }
 
-        public boolean isEnabled() {
-            return enabled;
+        public void setRole(String role) {
+            this.role = role;
         }
 
-        public void setEnabled(boolean enabled) {
-            this.enabled = enabled;
+        public String getRole() {
+            return role;
         }
     }
 }

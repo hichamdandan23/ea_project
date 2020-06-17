@@ -1,9 +1,10 @@
 package edu.miu.ea.userservice.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Role {
+public class Role implements Serializable {
     public Long getId() {
         return id;
     }
