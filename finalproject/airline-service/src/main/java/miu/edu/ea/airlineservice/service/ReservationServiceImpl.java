@@ -49,7 +49,7 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setFlights(flightRepository.findAllById(reservationRequest.getFlightIds()));
         reservation.setCreatedById(createdById);
         reservation.setPassengerId(reservationRequest.getPassengerId());
-        reservation.setReservationCode(UUID.randomUUID().toString().substring(0,4));
+        reservation.setReservationCode(UUID.randomUUID().toString().substring(0,4).toUpperCase());
         return ReservationMapper.mapToReservationResponse(reservationRepository.save(reservation));
     }
 

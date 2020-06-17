@@ -21,7 +21,7 @@ public class ReservationController {
     }
 
     @PostMapping(path = {"/admin/reservations", "/passenger/reservations", "/agent/reservations"})
-    public ReservationResponse createReservation(@Validated ReservationRequest reservationRequest, @RequestHeader(value = "USER_ID", defaultValue = "0") String userId){
+    public ReservationResponse createReservation(@Validated @RequestBody ReservationRequest reservationRequest, @RequestHeader(value = "USER_ID", defaultValue = "0") String userId){
         return reservationService.createReservation(reservationRequest, userId);
     }
 

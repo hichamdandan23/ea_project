@@ -9,6 +9,9 @@ public class TicketNumber {
     private int id;
     private String code;
 
+    public TicketNumber() {
+    }
+
     public TicketNumber(int id, String code) {
         this.id = id;
         this.code = code;

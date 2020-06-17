@@ -6,7 +6,7 @@ import java.time.LocalDate;
 @Entity
 public class Ticket {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String number;

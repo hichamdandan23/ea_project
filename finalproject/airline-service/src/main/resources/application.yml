@@ -4,23 +4,23 @@ server:
 spring:
   application:
     name: airline-service
-#  datasource:
-#    url: jdbc:mysql://localhost/airline-service
-##    url: jdbc:mariadb://localhost/ea
-#    username: root
-#    password: my-secret-pw
-#    driverClassName: com.mysql.cj.jdbc.Driver
-##    driverClassName: org.mariadb.jdbc.Driver
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: update
-#      naming:
-#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    url: jdbc:mysql://localhost/airline-service
+#    url: jdbc:mariadb://localhost/ea
+    username: root
+    password: my-secret-pw
+    driverClassName: com.mysql.cj.jdbc.Driver
+#    driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
 #        dialect: org.hibernate.dialect.MariaDBDialect
   devtools:
     livereload:

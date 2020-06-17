@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Reservation {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 6)
     private String reservationCode;
