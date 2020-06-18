@@ -26,6 +26,15 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
+    @GetMapping(path = {"/admin/reservations", "/passenger/reservations", "/agent/reservations"})
+    public List<ReservationResponse> listReservations(@RequestHeader(value = "USER_ID", defaultValue = "0") String userId, @RequestHeader(value = "USER_ROLE", defaultValue = "0") String roles){
+        return reservationService.getAllReservations(userId, roles);
+    }
+
+    @GetMapping(path = {"/admin/reservations/{id}", "/passenger/reservations/{id}", "/agent/reservations/{id}"})
+    public ReservationResponse getReservatonById(@PathVariable Long id, @RequestHeader(value = "USER_ID", defaultValue = "0") String userId, @RequestHeader(value = "USER_ROLE", defaultValue = "0") String roles){
+        return reservationService.getById(id, userId, roles);
+    }
 
     @GetMapping("/admin/reservations")
     public List<ReservationResponse> createReservation(){
@@ -49,35 +58,4 @@ public class ReservationController {
         return reservationService.confirmReservation(id);
     }
 
-    @GetMapping(path = {"/passenger/reservations", "/agent/reservations"})
-    public List<ReservationResponse> viewReservationList(
-            @RequestHeader(value = "USER_ID", defaultValue = "0") String userIdStr,
-            @RequestHeader(value = "USER_ROLE", defaultValue = "") String userRole,
-            @PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC)
-                    Pageable pageable) {
-        log.error("USER_ID:" + userIdStr + ", USER_ROLE:"+userRole);
-        Long userId = Long.parseLong(userIdStr);
-        if(userRole.contains("passenger")) {
-            return reservationService.getReservationsByPassenger(userId, pageable);
-        } else if (userRole.contains("agent")) {
-            return reservationService.getReservationsByCreator(userId, pageable);
-        } else {
-            return null;
-        }
-    }
-
-    @GetMapping(path = {"/passenger/reservations/{id}", "/agent/reservations/{id}"})
-    public ReservationResponse viewReservationDetail(
-            @PathVariable Long id,
-            @RequestHeader(value = "USER_ID", defaultValue = "0") String userIdStr,
-            @RequestHeader(value = "USER_ROLE", defaultValue = "") String userRole) {
-        Long userId = Long.parseLong(userIdStr);
-        if(userRole.contains("passenger")) {
-            return reservationService.getReservationDetailByPassenger(userId, id);
-        } else if (userRole.contains("agent")) {
-            return reservationService.getReservationDetailByCreator(userId, id);
-        } else {
-            return null;
-        }
-    }
 }
