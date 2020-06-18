@@ -21,4 +21,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
             +" and f.departureTime < ?1")
     List<Reservation> findReservationsNeedRemind(LocalDateTime time);
 
+    List<Reservation> findByPassengerIdOrCreatedById(String passengerId, String createdById);
+
 }

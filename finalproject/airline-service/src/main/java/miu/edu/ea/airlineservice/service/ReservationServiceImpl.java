@@ -40,6 +40,27 @@ public class ReservationServiceImpl implements ReservationService {
 
 
     @Override
+    public List<ReservationResponse> getAllReservations(String userId, String userRoles) {
+        List<ReservationResponse> reservationResponses = new ArrayList<>();
+        if(userRoles.contains("ADMIN"))
+            reservationResponses = reservationRepository.findAll().stream().map(reservation -> ReservationMapper.mapToReservationResponse(reservation)).collect(Collectors.toList());
+        else
+            reservationResponses = reservationRepository.findByPassengerIdOrCreatedById(userId, userId).stream().map(reservation -> ReservationMapper.mapToReservationResponse(reservation)).collect(Collectors.toList());
+        return reservationResponses;
+    }
+
+    public ReservationResponse getById(Long id, String userId, String userRoles) {
+        ReservationResponse reservationResponse = ReservationMapper.mapToReservationResponse(reservationRepository.findById(id)
+                    .orElseThrow(() -> new ApiCustomException("Reservation with id "+id+" is not found")));
+        if(userRoles.contains("AGENT") && !reservationResponse.getCreatedById().equals(userId))
+            throw new ApiCustomException("You are not authorized to access this reservation");
+        if(userRoles.contains("PASSENGER") && !reservationResponse.getPassengerId().equals(userId))
+            throw new ApiCustomException("You are not authorized to access this reservation");
+
+        return reservationResponse;
+    }
+
+    @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public ReservationResponse createReservation(ReservationRequest reservationRequest, String createdById) {
         Reservation reservation = new Reservation();
@@ -126,4 +147,5 @@ public class ReservationServiceImpl implements ReservationService {
 
         return sb.toString();
     }
+
 }
