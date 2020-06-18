@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ReservationService {
+    List<ReservationResponse> getAllReservations(String userId, String userRoles);
     ReservationResponse createReservation(ReservationRequest reservationRequest, String createdById);
     void cancelReservation(long reservationId);
     List<TicketResponse> confirmReservation(long reservationId);

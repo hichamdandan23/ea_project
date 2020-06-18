@@ -28,4 +28,7 @@ public interface ReservationRepository extends BaseRepository<Reservation, Long>
     Reservation findByPassengerIdAndAndId(String passengerId, Long id);
     List<Reservation> findAllByCreatedById(String createdById);
     Reservation findAllByCreatedByIdAndAndId(String createdById, Long id);
+
+    List<Reservation> findByPassengerIdOrCreatedById(String passengerId, String createdById);
+
 }

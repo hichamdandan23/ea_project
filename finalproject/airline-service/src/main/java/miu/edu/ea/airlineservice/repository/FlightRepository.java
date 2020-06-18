@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Long> {
@@ -15,4 +16,7 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
 
     @Query(value = "select count(rf.reservation_id) from Reservation_Flight rf join Reservation r on (rf.reservation_id = r.id) where rf.flight_id = :flightId and r.reservationStatus != 'CANCELLED'", nativeQuery = true)
     public Long countReservations(Long flightId);
+
+    @Query("from Flight f join f.departure da join f.arrival aa where da.code = :departureAirportCode and aa.code = :arrivalAirportCode")
+    List<Flight> getByIdArrivalAndDeparture(String departureAirportCode, String arrivalAirportCode);
 }
