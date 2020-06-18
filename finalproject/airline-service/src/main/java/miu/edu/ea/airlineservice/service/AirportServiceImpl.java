@@ -14,6 +14,7 @@ import miu.edu.ea.airlineservice.service.request.AirportRequest;
 import miu.edu.ea.airlineservice.service.response.AirlineResponse;
 import miu.edu.ea.airlineservice.service.response.AirportResponse;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class AirportServiceImpl implements AirportService {
     AirportRepository airportRepository;
 

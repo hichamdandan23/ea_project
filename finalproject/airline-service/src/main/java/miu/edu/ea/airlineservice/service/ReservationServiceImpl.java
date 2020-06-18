@@ -250,8 +250,24 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationResponse getReservationDetail(Long reservationId) {
-        return ReservationMapper.mapToReservationResponse(
+    public ReservationResponse getReservationDetailByPassenger(Long passengerId, Long reservationId) {
+        ReservationResponse reservationResponse = ReservationMapper.mapToReservationResponse(
                 reservationRepository.findById(reservationId).orElse(null));
+        if(reservationResponse.getPassengerId().equals(passengerId.toString())) {
+            return reservationResponse;
+        } else {
+            return  null;
+        }
+    }
+
+    @Override
+    public ReservationResponse getReservationDetailByCreator(Long creatorId, Long reservationId) {
+        ReservationResponse reservationResponse = ReservationMapper.mapToReservationResponse(
+                reservationRepository.findById(reservationId).orElse(null));
+        if(reservationResponse.getCreatedById().equals(creatorId.toString()) ) {
+            return reservationResponse;
+        } else {
+            return null;
+        }
     }
 }

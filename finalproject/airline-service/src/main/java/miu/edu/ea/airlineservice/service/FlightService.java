@@ -13,16 +13,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface FlightService {
-
-    List<FlightResponse> findDepartureByCodeOrArrivalByCode(String DCode, String ACode);
-    Page<FlightResponse> findByAirportCode(String dCode, String aCode, Pageable pageable);
-    List<FlightResponse> getAllFlights();
-    FlightResponse getById(Long id);
-    FlightResponse createOrUpdate(Flight flight);
-    Boolean deleteById(Long id);
-
     List<FlightResponse> getAll();
-    //FlightResponse getById(Long id);
+    FlightResponse getById(Long id);
     FlightResponse create(FlightRequest flightRequest);
     FlightResponse update(FlightRequest flightRequest, Long id);
 

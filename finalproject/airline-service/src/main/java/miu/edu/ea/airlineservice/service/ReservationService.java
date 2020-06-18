@@ -17,7 +17,8 @@ public interface ReservationService {
 
     List<ReservationResponse> getReservationsByCreator(Long creatorId, Pageable pageable);
     List<ReservationResponse> getReservationsByPassenger(Long passengerId, Pageable pageable);
-    ReservationResponse getReservationDetail(Long reservationId);
+    ReservationResponse getReservationDetailByCreator(Long creatorId, Long reservationId);
+    ReservationResponse getReservationDetailByPassenger(Long passengerId, Long reservationId);
 
     List<ReservationResponse> getAllReservations();
     List<ReservationResponse> getAllPassengerReservations(String userId);

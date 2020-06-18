@@ -6,6 +6,9 @@ import miu.edu.ea.airlineservice.service.AirlineService;
 import miu.edu.ea.airlineservice.service.AirportService;
 
 import miu.edu.ea.airlineservice.service.response.AirportResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,17 +27,16 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("airport")
 public class AirportController {
+    private static final Logger log = LoggerFactory.getLogger(AirportController.class);
+    @Autowired
     private AirportService airportService;
 
     @GetMapping(path = {"/passenger/airports", "/agent/airports", "/admin/airports"})
-    public List<AirportResponse> getAll() {
-        return airportService.getAll();
-    }
-
-    @GetMapping(path = {"/passenger/airports", "/agent/airports"})
-    public List<AirportResponse> getAirports(@RequestParam("code") String code) {
+    public List<AirportResponse> getAirports(@RequestParam(value = "code", defaultValue = "") String code) {
+        if(code.equals("")) {
+            return airportService.getAll();
+        }
         return airportService.findByCode(code);
     }
 

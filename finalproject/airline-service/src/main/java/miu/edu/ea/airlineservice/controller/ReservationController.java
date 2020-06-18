@@ -32,41 +32,6 @@ public class ReservationController {
         return reservationService.getAllReservations();
     }
 
-    /*
-    @GetMapping("/passenger/reservations")
-    public List<ReservationResponse> getAllPassengerReservations(@RequestHeader(value = "USER_ID", defaultValue = "1") String userId)
-    {
-        return reservationService.getAllPassengerReservations(userId);
-    }
-
-    @GetMapping("/passenger/reservation/{id}")
-    public ReservationResponse getPassengerReservation(@PathVariable Long id, @RequestHeader(value = "USER_ID", defaultValue = "1") String userId)
-    {
-        return reservationService.getPassengerReservation(id, userId);
-    }
-
-    @GetMapping("/agent/reservations")
-    public List<ReservationResponse> getAllAgentReservations(@RequestHeader(value = "USER_ID", defaultValue = "1") String createdById)
-    {
-        return reservationService.getAllAgentReservations(createdById);
-    }
-
-    @GetMapping("/agent/reservation/{id}")
-    public ReservationResponse getAgentReservationDetail(@PathVariable Long id, @RequestHeader(value = "USER_ID", defaultValue = "1") String createdById)
-    {
-        return reservationService.getAgentReservation(id, createdById);
-    }
-    */
-
-    @GetMapping(path = {"/admin/reservations", "/passenger/reservations", "/agent/reservations"})
-    public List<ReservationResponse> listReservations(@RequestHeader(value = "USER_ID", defaultValue = "0") String userId, @RequestHeader(value = "USER_ROLE", defaultValue = "0") String roles){
-        return reservationService.getAllReservations(userId, roles);
-    }
-
-    @GetMapping(path = {"/admin/reservations/{id}", "/passenger/reservations/{id}", "/agent/reservations/{id}"})
-    public ReservationResponse getReservatonById(@PathVariable Long id, @RequestHeader(value = "USER_ID", defaultValue = "0") String userId, @RequestHeader(value = "USER_ROLE", defaultValue = "0") String roles){
-        return reservationService.getById(id, userId, roles);
-    }
 
     @PostMapping(path = {"/admin/reservations", "/passenger/reservations", "/agent/reservations"})
     public ReservationResponse createReservation(@Valid @RequestBody ReservationRequest reservationRequest, @RequestHeader(value = "USER_ID", defaultValue = "0") String userId) {
@@ -104,8 +69,15 @@ public class ReservationController {
     @GetMapping(path = {"/passenger/reservations/{id}", "/agent/reservations/{id}"})
     public ReservationResponse viewReservationDetail(
             @PathVariable Long id,
-            @RequestHeader(value = "USER_ID", defaultValue = "0") Long userId,
+            @RequestHeader(value = "USER_ID", defaultValue = "0") String userIdStr,
             @RequestHeader(value = "USER_ROLE", defaultValue = "") String userRole) {
-        return reservationService.getReservationDetail(id);
+        Long userId = Long.parseLong(userIdStr);
+        if(userRole.contains("passenger")) {
+            return reservationService.getReservationDetailByPassenger(userId, id);
+        } else if (userRole.contains("agent")) {
+            return reservationService.getReservationDetailByCreator(userId, id);
+        } else {
+            return null;
+        }
     }
 }

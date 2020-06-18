@@ -59,16 +59,6 @@ public class FlightController {
         return flightService.update(flightRequest, id);
     }
 
-    @GetMapping(path = {"/passenger/flights", "/agent/flights"})
-    public List<FlightResponse> getFlights(@RequestParam(value = "acode", required = false) String acode,
-                                   @RequestParam(value = "dcode", required = false) String dcode,
-                                   @PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC)
-                                               Pageable pageable) {
-        List<FlightResponse> flights = flightService.findByAirportCode(dcode, acode, pageable).getContent();
-        flights.forEach(f -> log.error("----" + f.getId()));
-        return flightService.findDepartureByCodeOrArrivalByCode(dcode, acode);
-    }
-
     @DeleteMapping(path = {"/admin/flights/{id}"})
     public ResponseEntity<?> delete(@PathVariable Long id){
         flightService.delete(id);

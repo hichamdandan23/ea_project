@@ -89,7 +89,7 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
                 }
 
                 String role = roles.stream().collect(Collectors.joining(","));
-                logger.error("USERID:"+userVerifyResponse.getId().toString() + ", USER_ROLE:"+role);
+                //logger.error("USERID:"+userVerifyResponse.getId().toString() + ", USER_ROLE:"+role);
 
                 ServerHttpRequest host = exchange.getRequest().mutate()
                         .header(USER_ID, userVerifyResponse.getId().toString())

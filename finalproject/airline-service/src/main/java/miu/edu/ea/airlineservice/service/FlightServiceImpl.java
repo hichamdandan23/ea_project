@@ -41,26 +41,6 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<FlightResponse> getAllFlights() {
-        return null;
-    }
-
-    @Override
-    public FlightResponse createOrUpdate(Flight flight) {
-        return null;
-    }
-
-    @Override
-    public Page<FlightResponse> findByAirportCode(String dCode, String aCode, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public List<FlightResponse> findDepartureByCodeOrArrivalByCode(String DCode, String ACode) {
-        return null;
-    }
-
-    @Override
     public List<FlightResponse> getAll() {
         return flightRepository.findAll().stream().map(FlightMapper::mapToFlightResponse).collect(Collectors.toList());
     }
@@ -114,10 +94,5 @@ public class FlightServiceImpl implements FlightService {
     public void delete(Long id) {
         Flight flight = flightRepository.findById(id).orElseThrow(() -> new ApiCustomException("Flight with id " + id + " is not found"));
         flightRepository.delete(flight);
-    }
-
-    @Override
-    public Boolean deleteById(Long id) {
-        return null;
     }
 }
