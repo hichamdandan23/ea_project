@@ -9,14 +9,18 @@ import miu.edu.ea.airlineservice.repository.TicketRepository;
 import miu.edu.ea.airlineservice.service.mapper.ReservationMapper;
 import miu.edu.ea.airlineservice.service.mapper.TicketMapper;
 import miu.edu.ea.airlineservice.service.request.ReservationRequest;
+
 import miu.edu.ea.airlineservice.service.response.ReservationResponse;
 import miu.edu.ea.airlineservice.service.response.TicketResponse;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import miu.edu.ea.airlineservice.service.response.FlightResponse;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import javax.persistence.criteria.*;
 import java.math.BigInteger;
@@ -41,6 +45,68 @@ public class ReservationServiceImpl implements ReservationService {
         this.ticketNumberRepository = ticketNumberRepository;
     }
 
+
+    public List<ReservationResponse> getAllReservations()
+    {
+        return reservationRepository.findAll().stream()
+                .map(this::reservationToReservationResponse)
+                .collect(Collectors.toList());
+    }
+
+    public ReservationResponse reservationToReservationResponse(Reservation reservation)
+    {
+        ReservationResponse reservationResponse = new ReservationResponse();
+
+        reservationResponse.setId(reservation.getId());
+        reservationResponse.setReservationCode(reservation.getReservationCode());
+        reservationResponse.setCreatedById(reservation.getCreatedById());
+        reservationResponse.setPassengerId(reservation.getPassengerId());
+        reservationResponse.setReservationStatus(reservation.getReservationStatus());
+
+        reservationResponse.setFlights(reservation.getFlights().stream()
+                .map(this::flightToFlightResponse)
+                .collect(Collectors.toList()));
+
+        reservationResponse.setTickets(reservation.getTickets().stream()
+                .map(this::ticketToTicketResponse)
+                .collect(Collectors.toList()));
+
+        return reservationResponse;
+    }
+
+    public FlightResponse flightToFlightResponse(Flight flight)
+    {
+        FlightResponse flightResponse = new FlightResponse();
+
+        return flightResponse;
+    }
+
+    public TicketResponse ticketToTicketResponse(Ticket ticket)
+    {
+        TicketResponse ticketResponse = new TicketResponse();
+
+        return ticketResponse;
+    }
+
+    public List<ReservationResponse> getAllPassengerReservations(String userId) {
+        return reservationRepository.findAllByPassengerId(userId).stream()
+                .map(this::reservationToReservationResponse)
+                .collect(Collectors.toList());
+    }
+
+    public ReservationResponse getPassengerReservation(Long id, String userId) {
+        return reservationToReservationResponse(reservationRepository.findByPassengerIdAndAndId(userId, id));
+    }
+
+    public List<ReservationResponse> getAllAgentReservations(String createdById) {
+        return reservationRepository.findAllByCreatedById(createdById).stream()
+                .map(this::reservationToReservationResponse)
+                .collect(Collectors.toList());
+    }
+
+    public ReservationResponse getAgentReservation(Long id, String createdById) {
+        return reservationToReservationResponse(reservationRepository.findAllByCreatedByIdAndAndId(createdById, id));
+    }
 
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)

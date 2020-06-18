@@ -16,10 +16,16 @@ import java.util.List;
 @Repository
 public interface ReservationRepository extends BaseRepository<Reservation, Long> {
 
+
     @Query("select distinct r from Reservation r join r.flights f"
             +" where r.reservationStatus='CONFIRMED'"
             +" and r.reminded=false"
             +" and f.departureTime < ?1")
     List<Reservation> findReservationsNeedRemind(LocalDateTime time);
 
+
+    List<Reservation> findAllByPassengerId(String passengerId);
+    Reservation findByPassengerIdAndAndId(String passengerId, Long id);
+    List<Reservation> findAllByCreatedById(String createdById);
+    Reservation findAllByCreatedByIdAndAndId(String createdById, Long id);
 }

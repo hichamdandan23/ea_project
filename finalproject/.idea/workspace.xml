@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutomaticModuleUnloader">
+    <loaded-modules>
+      <module name="finalproject" />
+      <module name="airline-service" />
+      <module name="contracts" />
+      <module name="gateway-service" />
+      <module name="eureka-service" />
+    </loaded-modules>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dd3975e1-73f0-4f7d-a7de-2dcd4210864f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/airline-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/airline-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/AirlineServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/AirlineServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Airline.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Airline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Airport.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Airport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/ReservationStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/ReservationStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/domain/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/AirlineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/AirlineRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/AirportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/AirportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/FlightRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/FlightRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/ReservationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/ReservationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/TicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/repository/TicketRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/ReminderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/ReminderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/ReservationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/mapper/AirlineMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/mapper/AirlineMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/mapper/AirportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/mapper/AirportMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/mapper/FlightMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/mapper/FlightMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/mapper/ReservationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/mapper/ReservationMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/request/ReservationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/request/ReservationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/AirlineResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/AirlineResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/AirportResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/AirportResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/FlightResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/FlightResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/ReservationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/ReservationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/TicketResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/service/response/TicketResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/task/FlightRemindTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/java/miu/edu/ea/airlineservice/task/FlightRemindTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/src/test/java/miu/edu/ea/airlineservice/AirlineServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/src/test/java/miu/edu/ea/airlineservice/AirlineServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airline-service/target/classes/miu/edu/ea/airlineservice/controller/ReservationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/airline-service/target/classes/miu/edu/ea/airlineservice/controller/ReservationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/commons/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/commons/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/commons.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commons/commons.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/commons/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/commons/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commons/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/config/CommonServiceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/config/CommonServiceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/controller/BaseReadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/controller/BaseReadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/controller/BaseReadWriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/controller/BaseReadWriteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/repository/search/EntitySpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/repository/search/EntitySpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/repository/search/SearchCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/repository/search/SearchCriteria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/repository/search/SpecificationBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/repository/search/SpecificationBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/BaseReadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/BaseReadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/BaseReadServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/BaseReadServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/BaseReadWriteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/BaseReadWriteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/client/BaseServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/client/BaseServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/mapper/BaseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/edu/miu/ea/commons/service/mapper/BaseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/test/java/edu/miu/ea/CommonsApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/test/java/edu/miu/ea/CommonsApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/contracts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/contracts.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/Code.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/Code.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/email/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/email/Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/RoleResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/RoleResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserAuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserAuthRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserAuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserAuthResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserDetailRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserDetailRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserDetailResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserDetailResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserEditProfileRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserEditProfileRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserEditProfileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserEditProfileResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserRegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserRegisterRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserRegisterResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserRegisterResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserVerifyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserVerifyRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserVerifyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/main/java/edu/miu/ea/contracts/user/UserVerifyResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/target/classes/edu/miu/ea/contracts/user/UserCreateRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/target/classes/edu/miu/ea/contracts/user/UserCreateRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/target/classes/edu/miu/ea/contracts/user/UserDetailResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/target/classes/edu/miu/ea/contracts/user/UserDetailResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/target/classes/edu/miu/ea/contracts/user/UserResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/target/classes/edu/miu/ea/contracts/user/UserResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/eaproject.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/doc/eaproject.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/email-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/email-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/src/main/java/edu/miu/ea/emailservice/EmailMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/src/main/java/edu/miu/ea/emailservice/EmailMessageReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/src/main/java/edu/miu/ea/emailservice/EmailMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/src/main/java/edu/miu/ea/emailservice/EmailMessageSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/src/main/java/edu/miu/ea/emailservice/EmailServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/src/main/java/edu/miu/ea/emailservice/EmailServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-service/src/test/java/edu/miu/ea/emailservice/EmailServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-service/src/test/java/edu/miu/ea/emailservice/EmailServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/eureka-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/eureka-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/src/main/java/edu/miu/ea/eurekaservice/EurekaServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/src/main/java/edu/miu/ea/eurekaservice/EurekaServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/src/test/java/edu/miu/ea/eurekaservice/EurekaServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/src/test/java/edu/miu/ea/eurekaservice/EurekaServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/target/classes/edu/miu/ea/eurekaservice/EurekaServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/target/classes/edu/miu/ea/eurekaservice/EurekaServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/target/test-classes/edu/miu/ea/eurekaservice/EurekaServiceApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/target/test-classes/edu/miu/ea/eurekaservice/EurekaServiceApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/gateway-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/gateway-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/java/edu/miu/ea/gatewayservice/GatewayServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/java/edu/miu/ea/gatewayservice/GatewayServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/src/test/java/edu/miu/ea/gatewayservice/GatewayServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/src/test/java/edu/miu/ea/gatewayservice/GatewayServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/target/classes/edu/miu/ea/gatewayservice/GatewayServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/target/classes/edu/miu/ea/gatewayservice/GatewayServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/target/classes/edu/miu/ea/gatewayservice/UserAuthGatewayFilterFactory$Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/target/classes/edu/miu/ea/gatewayservice/UserAuthGatewayFilterFactory$Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/target/classes/edu/miu/ea/gatewayservice/UserAuthGatewayFilterFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/target/classes/edu/miu/ea/gatewayservice/UserAuthGatewayFilterFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service/target/test-classes/edu/miu/ea/gatewayservice/GatewayServiceApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/gateway-service/target/test-classes/edu/miu/ea/gatewayservice/GatewayServiceApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/UserServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/controller/RoleAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/controller/RoleAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/controller/UserAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/controller/UserAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/dao/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/dao/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/dao/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/dao/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/domain/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/domain/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/ItemType.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/ItemType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/mapper/RoleResponseToRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/mapper/RoleResponseToRoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/mapper/RoleToRoleResponseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/mapper/RoleToRoleResponseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/mapper/UserResponseToUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/mapper/UserResponseToUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/mapper/UserToUserResponseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/edu/miu/ea/userservice/service/mapper/UserToUserResponseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/test/java/edu/miu/ea/userservice/UserServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/test/java/edu/miu/ea/userservice/UserServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/user-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/user-service.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1dPm9PuriqnSYFSZLeTAeC9KZSH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.EmailServiceApplication">
+    <configuration name="AirlineServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="airline-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="miu.edu.ea.airlineservice.AirlineServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmailServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="email-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="edu.miu.ea.emailservice.EmailServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="eureka-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="edu.miu.ea.eurekaservice.EurekaServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="gateway-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="edu.miu.ea.gatewayservice.GatewayServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="user-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="edu.miu.ea.userservice.UserServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpringMvcView">
+    <option name="showControllers" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dd3975e1-73f0-4f7d-a7de-2dcd4210864f" name="Default Changelist" comment="" />
+      <created>1592334957825</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592334957825</updated>
+      <workItem from="1592334988888" duration="32081000" />
+      <workItem from="1592436923120" duration="2098000" />
+      <workItem from="1592441933970" duration="6331000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592335349110">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1592335349110" />
+    <state x="488" y="83" key="#com.intellij.ide.util.MemberChooser" timestamp="1592445896899">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592445896899" />
+    <state x="534" y="256" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1592335131264">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="534" y="256" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1592335131264" />
+    <state x="463" y="60" key="FileChooserDialogImpl" timestamp="1592353181525">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="60" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592353181525" />
+    <state width="1323" height="214" key="GridCell.Tab.0.bottom" timestamp="1592448907785">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592448907785" />
+    <state width="1323" height="214" key="GridCell.Tab.0.center" timestamp="1592448907784">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592448907784" />
+    <state width="1323" height="214" key="GridCell.Tab.0.left" timestamp="1592448907783">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592448907783" />
+    <state width="1323" height="214" key="GridCell.Tab.0.right" timestamp="1592448907784">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592448907784" />
+    <state width="1323" height="214" key="GridCell.Tab.1.bottom" timestamp="1592448907786">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592448907786" />
+    <state width="1323" height="214" key="GridCell.Tab.1.center" timestamp="1592448907785">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1592448907785" />
+    <state width="1323" height="214" key="GridCell.Tab.1.left" timestamp="1592448907785">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1592448907785" />
+    <state width="1323" height="214" key="GridCell.Tab.1.right" timestamp="1592448907786">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1592448907786" />
+    <state x="350" y="69" key="NewModule_or_Project.wizard" timestamp="1592353183031">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="350" y="69" key="NewModule_or_Project.wizard/0.0.1366.728@0.0.1366.728" timestamp="1592353183031" />
+    <state x="153" y="0" key="SettingsEditor" timestamp="1592446487121">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="153" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1592446487121" />
+    <state x="390" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1592436923607">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592436923607" />
+  </component>
+</project>

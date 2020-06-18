@@ -78,8 +78,7 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
 
             if (userVerifyResponse.getCode() == Code.Success) {
                 List<String> roles = userVerifyResponse.getRoles();
-                //roles.forEach(s -> logger.error(s));
-                logger.error(config.role);
+
                 Integer num = roles.stream()
                         .map(role -> role.equals(config.role)? 1 : 0)
                         .reduce((sum, i)->sum+i)

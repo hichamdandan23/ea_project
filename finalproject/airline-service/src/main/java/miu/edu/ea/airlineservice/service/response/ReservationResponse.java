@@ -2,15 +2,18 @@ package miu.edu.ea.airlineservice.service.response;
 
 import miu.edu.ea.airlineservice.domain.ReservationStatus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationResponse {
     private Long id;
     private ReservationStatus reservationStatus;
+    private String reservationCode;
     private String passengerId;
     private String createdById;
     private String reservationCode;
     private List<FlightResponse> flights;
+    private List<TicketResponse> tickets = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -58,5 +61,13 @@ public class ReservationResponse {
 
     public void setReservationCode(String reservationCode) {
         this.reservationCode = reservationCode;
+    }
+
+    public List<TicketResponse> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<TicketResponse> tickets) {
+        this.tickets = tickets;
     }
 }
