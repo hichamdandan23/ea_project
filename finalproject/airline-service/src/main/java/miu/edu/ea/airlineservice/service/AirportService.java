@@ -2,13 +2,14 @@ package miu.edu.ea.airlineservice.service;
 
 import miu.edu.ea.airlineservice.domain.Airline;
 import miu.edu.ea.airlineservice.domain.Airport;
+import miu.edu.ea.airlineservice.service.response.AirportResponse;
 
 import java.util.List;
 
 public interface AirportService {
-    List<Airport> findByCode(String Code);
-    List<Airport> getAllAirports();
-    Airport getById(Long id);
-    Airport createOrUpdate(Airport airport);
+    List<AirportResponse> findByCode(String Code);
+    List<AirportResponse> getAllAirports();
+    AirportResponse getById(Long id);
+    AirportResponse createOrUpdate(Airport airport);
     Boolean deleteById(Long id);
 }

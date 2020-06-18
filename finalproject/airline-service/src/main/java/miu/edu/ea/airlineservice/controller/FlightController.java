@@ -3,6 +3,7 @@ package miu.edu.ea.airlineservice.controller;
 import miu.edu.ea.airlineservice.domain.Flight;
 import miu.edu.ea.airlineservice.service.FlightService;
 import miu.edu.ea.airlineservice.service.ReminderService;
+import miu.edu.ea.airlineservice.service.response.FlightResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
@@ -28,11 +29,11 @@ public class FlightController {
 
 
     @GetMapping(path = {"/passenger/flights", "/agent/flights"})
-    public List<Flight> getFlights(@RequestParam(value = "acode", required = false) String acode,
+    public List<FlightResponse> getFlights(@RequestParam(value = "acode", required = false) String acode,
                                    @RequestParam(value = "dcode", required = false) String dcode,
                                    @PageableDefault(value = 15, sort = { "id" }, direction = Sort.Direction.DESC)
                                                Pageable pageable) {
-        List<Flight> flights = flightService.findByAirportCode(dcode, acode, pageable).getContent();
+        List<FlightResponse> flights = flightService.findByAirportCode(dcode, acode, pageable).getContent();
         flights.forEach(f -> log.error("----" + f.getId()));
         return flightService.findDepartureByCodeOrArrivalByCode(dcode, acode);
     }
