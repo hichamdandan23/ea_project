@@ -11,7 +11,6 @@ public class ReservationResponse {
     private String reservationCode;
     private String passengerId;
     private String createdById;
-    private String reservationCode;
     private List<FlightResponse> flights;
     private List<TicketResponse> tickets = new ArrayList<>();
 

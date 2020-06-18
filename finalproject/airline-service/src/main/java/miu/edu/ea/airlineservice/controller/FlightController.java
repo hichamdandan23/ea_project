@@ -67,6 +67,7 @@ public class FlightController {
         List<FlightResponse> flights = flightService.findByAirportCode(dcode, acode, pageable).getContent();
         flights.forEach(f -> log.error("----" + f.getId()));
         return flightService.findDepartureByCodeOrArrivalByCode(dcode, acode);
+    }
 
     @DeleteMapping(path = {"/admin/flights/{id}"})
     public ResponseEntity<?> delete(@PathVariable Long id){

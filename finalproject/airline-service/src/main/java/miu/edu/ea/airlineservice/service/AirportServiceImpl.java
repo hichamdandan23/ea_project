@@ -34,8 +34,8 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public List<AirportResponse> getAllAirports() {
-        return  airportRepository.findAll().stream().map(AirportMapper::mapToAirportResponse).collect(Collectors.toList());
-
+        return airportRepository.findAll().stream().map(AirportMapper::mapToAirportResponse).collect(Collectors.toList());
+    }
 
     @Override
     public List<AirportResponse> getAll() {
@@ -59,7 +59,8 @@ public class AirportServiceImpl implements AirportService {
         Optional<Airport> lasVenturasAirport = airportRepository.findById(airport.getId());
         if(lasVenturasAirport.isPresent()) {
             tempPort = lasVenturasAirport.get();
-        Airport airport = airportRepository.findById(id).orElseThrow(() -> new ApiCustomException("Airport with id " + id + " is not found"));
+        }
+        //Airport airport = airportRepository.findById(id).orElseThrow(() -> new ApiCustomException("Airport with id " + id + " is not found"));
         return AirportMapper.mapToAirportResponse(airport);
     }
 
@@ -90,5 +91,10 @@ public class AirportServiceImpl implements AirportService {
     public void delete(Long id) {
         Airport airport = airportRepository.findById(id).orElseThrow(() -> new ApiCustomException("Airport with id " + id + " is not found"));
         airportRepository.delete(airport);
+    }
+
+    @Override
+    public Boolean deleteById(Long id) {
+        return null;
     }
 }

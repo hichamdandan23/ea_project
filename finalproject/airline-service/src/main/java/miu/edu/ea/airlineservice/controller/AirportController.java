@@ -36,6 +36,7 @@ public class AirportController {
     @GetMapping(path = {"/passenger/airports", "/agent/airports"})
     public List<AirportResponse> getAirports(@RequestParam("code") String code) {
         return airportService.findByCode(code);
+    }
 
     @GetMapping(path = {"/passenger/airports/{id}", "/agent/airports/{id}", "/admin/airports/{id}"})
     public AirportResponse getById(@PathVariable Long id){
