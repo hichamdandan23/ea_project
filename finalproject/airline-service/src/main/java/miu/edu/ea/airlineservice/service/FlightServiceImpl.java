@@ -3,6 +3,8 @@ package miu.edu.ea.airlineservice.service;
 import miu.edu.ea.airlineservice.domain.Airport;
 import miu.edu.ea.airlineservice.domain.Flight;
 import miu.edu.ea.airlineservice.repository.FlightRepository;
+import miu.edu.ea.airlineservice.service.mapper.FlightMapper;
+import miu.edu.ea.airlineservice.service.response.FlightResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
@@ -15,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class FlightServiceImpl implements FlightService {
@@ -24,7 +27,7 @@ public class FlightServiceImpl implements FlightService {
         this.flightRepository = flightRepository;
     }
 
-    @Override
+   /* @Override
     public Page<Flight> findByAirportCode(String dCode, String aCode, Pageable pageable) {
          return flightRepository.findAll(new Specification<Flight>() {
             @Override
@@ -42,31 +45,37 @@ public class FlightServiceImpl implements FlightService {
                         .getRestriction();
             }
         }, pageable);
+    }*/
+
+    @Override
+    public List<FlightResponse> findDepartureByCodeOrArrivalByCode(String DCode, String ACode) {
+        return flightRepository.findAll().stream().map(FlightMapper::mapToFlightResponse).collect(Collectors.toList());
     }
 
     @Override
-    public List<Flight> findDepartureByCodeOrArrivalByCode(String DCode, String ACode) {
-        return flightRepository.findByDepartureOrArrival(DCode, ACode);
+    public Page<FlightResponse> findByAirportCode(String dCode, String aCode, Pageable pageable) {
+        return null;
+    }
+
+
+    @Override
+    public List<FlightResponse> getAllFlights() {
+        return flightRepository.findAll().stream().map(FlightMapper::mapToFlightResponse).collect(Collectors.toList());
     }
 
     @Override
-    public List<Flight> getAllFlights() {
-        return flightRepository.findAll();
-    }
-
-    @Override
-    public Flight getById(Long id) {
+    public FlightResponse getById(Long id) {
         Flight tempLight = new Flight();
         tempLight.setNumber("Flight Not Found!");
         Optional<Flight> flightOfTheBumblebee = flightRepository.findById(id);
         if(flightOfTheBumblebee.isPresent()){
             tempLight = flightOfTheBumblebee.get();
         }
-        return tempLight;
+        return FlightMapper.mapToFlightResponse(tempLight);
     }
 
     @Override
-    public Flight createOrUpdate(Flight flight) {
+    public FlightResponse createOrUpdate(Flight flight) {
         Flight tempLight = flight;
         Optional<Flight> flightOfTheBumblebee = flightRepository.findById(flight.getId());
         if(flightOfTheBumblebee.isPresent()) {
@@ -83,7 +92,7 @@ public class FlightServiceImpl implements FlightService {
 
         flightRepository.save(tempLight);
 
-        return tempLight;
+        return FlightMapper.mapToFlightResponse(tempLight);
     }
 
     @Override

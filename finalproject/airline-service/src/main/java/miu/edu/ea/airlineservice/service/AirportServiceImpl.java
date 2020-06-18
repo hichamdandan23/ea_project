@@ -4,11 +4,15 @@ import miu.edu.ea.airlineservice.domain.Airline;
 import miu.edu.ea.airlineservice.domain.Airport;
 import miu.edu.ea.airlineservice.repository.AirlineRepository;
 import miu.edu.ea.airlineservice.repository.AirportRepository;
+import miu.edu.ea.airlineservice.service.mapper.AirportMapper;
+import miu.edu.ea.airlineservice.service.mapper.FlightMapper;
+import miu.edu.ea.airlineservice.service.response.AirportResponse;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AirportServiceImpl implements AirportService {
@@ -18,28 +22,28 @@ public class AirportServiceImpl implements AirportService {
         this.airportRepository = airportRepository;
     }
     @Override
-    public List<Airport> findByCode(String code) {
-        return airportRepository.findByCode(code);
+    public List<AirportResponse> findByCode(String code) {
+        return airportRepository.findByCode(code).stream().map(AirportMapper::mapToAirportResponse).collect(Collectors.toList());
     }
 
     @Override
-    public List<Airport> getAllAirports() {
-        return  airportRepository.findAll();
+    public List<AirportResponse> getAllAirports() {
+        return  airportRepository.findAll().stream().map(AirportMapper::mapToAirportResponse).collect(Collectors.toList());
     }
 
     @Override
-    public Airport getById(Long id) {
+    public AirportResponse getById(Long id) {
         Airport tempPort = new Airport();
         tempPort.setName("Airport Not Found!");
         Optional<Airport> lasVenturasAirport = airportRepository.findById(id);
         if(lasVenturasAirport.isPresent()){
             tempPort = lasVenturasAirport.get();
         }
-        return tempPort;
+        return AirportMapper.mapToAirportResponse(tempPort);
     }
 
     @Override
-    public Airport createOrUpdate(Airport airport) {
+    public AirportResponse createOrUpdate(Airport airport) {
         Airport tempPort = airport;
         Optional<Airport> lasVenturasAirport = airportRepository.findById(airport.getId());
         if(lasVenturasAirport.isPresent()) {
@@ -52,7 +56,7 @@ public class AirportServiceImpl implements AirportService {
 
         airportRepository.save(tempPort);
 
-        return tempPort;
+        return AirportMapper.mapToAirportResponse(tempPort);
     }
 
     @Override
