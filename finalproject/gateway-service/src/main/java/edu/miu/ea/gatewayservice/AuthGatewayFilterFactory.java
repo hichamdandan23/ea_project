@@ -48,7 +48,7 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
 
     @Override
     public List<String> shortcutFieldOrder() {
-        return Arrays.asList("enabled");
+        return Arrays.asList("role");
     }
 
     @Override
@@ -78,18 +78,24 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
 
             if (userVerifyResponse.getCode() == Code.Success) {
                 List<String> roles = userVerifyResponse.getRoles();
+                //roles.forEach(s -> logger.error(s));
+                logger.error(config.role);
                 Integer num = roles.stream()
                         .map(role -> role.equals(config.role)? 1 : 0)
                         .reduce((sum, i)->sum+i)
                         .orElse(0);
                 if(num == 0) {
-                    return chain.filter(exchange);
+                    response.setStatusCode(HttpStatus.UNAUTHORIZED);
+                    return response.setComplete();
                 }
+
+                String role = roles.stream().collect(Collectors.joining(","));
+                logger.error("USERID:"+userVerifyResponse.getId().toString() + ", USER_ROLE:"+role);
 
                 ServerHttpRequest host = exchange.getRequest().mutate()
                         .header(USER_ID, userVerifyResponse.getId().toString())
                         .header(USER_EMAIL, userVerifyResponse.getEmail())
-                        .header(USER_ROLE, roles.stream().collect(Collectors.joining(",")))
+                        .header(USER_ROLE, role)
                         .build();
                 ServerWebExchange build = exchange.mutate().request(host).build();
                 return chain.filter(build);
@@ -122,9 +128,6 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
 
     public static class Config {
         private String role;
-
-        public Config() {
-        }
 
         public void setRole(String role) {
             this.role = role;
