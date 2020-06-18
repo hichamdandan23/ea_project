@@ -12,6 +12,19 @@ public class FlightResponse {
     private AirportResponse arrival;
     private AirlineResponse airline;
 
+    public FlightResponse(){}
+
+    public FlightResponse(Long id, String number, Integer capacity, LocalDateTime departureTime, LocalDateTime arrivalTime, AirportResponse departure, AirportResponse arrival, AirlineResponse airline) {
+        this.id = id;
+        this.number = number;
+        this.capacity = capacity;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.departure = departure;
+        this.arrival = arrival;
+        this.airline = airline;
+    }
+
     public Long getId() {
         return id;
     }
