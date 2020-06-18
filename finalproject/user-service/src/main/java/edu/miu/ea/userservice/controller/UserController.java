@@ -1,6 +1,6 @@
 package edu.miu.ea.userservice.controller;
 
-import edu.miu.ea.contracts.Code;
+import edu.miu.ea.contracts.*;
 import edu.miu.ea.contracts.user.*;
 import edu.miu.ea.userservice.domain.Role;
 import edu.miu.ea.userservice.domain.User;
@@ -9,11 +9,9 @@ import edu.miu.ea.userservice.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
@@ -147,5 +145,15 @@ public class UserController {
         userDetailResponse.setMsg("");
 
         return  userDetailResponse;
+    }
+
+    @PostMapping("/admin/user/{userId}/roles/{rolestr}")
+    public Response roles(@PathVariable Long userId, @PathVariable String rolestr) {
+        List<String> roles = Arrays.asList(rolestr.split(","));
+        boolean result = userService.setRole(userId, roles);
+        if(result) {
+            return new Response(Code.Success, "");
+        }
+        return new Response(Code.ParamError, "Param error");
     }
 }

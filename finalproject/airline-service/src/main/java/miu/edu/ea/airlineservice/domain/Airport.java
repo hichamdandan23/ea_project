@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Airport {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 3, nullable = false)
@@ -18,6 +18,12 @@ public class Airport {
     private Address address;
 
     public Airport() {
+    }
+
+    public Airport (String code, String name, Address address) {
+        this.code = code;
+        this.name = name;
+        this.address = address;
     }
 
     public Long getId() {

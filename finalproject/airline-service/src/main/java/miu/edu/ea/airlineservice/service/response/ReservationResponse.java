@@ -69,10 +69,4 @@ public class ReservationResponse {
     public void setTickets(List<TicketResponse> tickets) {
         this.tickets = tickets;
     }
-
-    public ReservationResponse(){
-
-    }
-
-
 }

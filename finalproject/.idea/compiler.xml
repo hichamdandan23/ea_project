@@ -16,13 +16,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="airline-service" target="11" />
-      <module name="commons" target="11" />
+      <module name="airline-service" target="1.8" />
+      <module name="commons" target="1.8" />
       <module name="contracts" target="11" />
-      <module name="email-service" target="11" />
-      <module name="eureka-service" target="11" />
-      <module name="gateway-service" target="11" />
-      <module name="user-service" target="11" />
+      <module name="email-service" target="1.8" />
+      <module name="eureka-service" target="1.8" />
+      <module name="gateway-service" target="1.8" />
+      <module name="user-service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

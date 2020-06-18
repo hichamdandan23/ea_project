@@ -1,5 +1,9 @@
 package edu.miu.ea.commons.service;
 
+import java.io.Serializable;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import edu.miu.ea.commons.exception.ResourceNotFoundException;
 import edu.miu.ea.commons.repository.BaseRepository;
 import edu.miu.ea.commons.repository.search.SpecificationBuilder;
@@ -9,10 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.io.Serializable;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 /**

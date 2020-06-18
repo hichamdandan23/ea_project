@@ -5,9 +5,9 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:mysql://localhost:3306/eaproject?serverTimezone=UTC
+    url: jdbc:mysql://localhost/user-service?serverTimezone=UTC
     username: root
-    password: 
+    password: my-secret-pw
     driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true

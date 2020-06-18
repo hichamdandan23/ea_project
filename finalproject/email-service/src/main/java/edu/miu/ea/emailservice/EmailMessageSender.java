@@ -1,5 +1,7 @@
 package edu.miu.ea.emailservice;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import edu.miu.ea.contracts.email.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

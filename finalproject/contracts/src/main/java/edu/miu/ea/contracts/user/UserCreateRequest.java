@@ -1,6 +1,7 @@
 package edu.miu.ea.contracts.user;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class UserCreateRequest {
 

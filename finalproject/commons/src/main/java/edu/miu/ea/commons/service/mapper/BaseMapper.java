@@ -1,11 +1,12 @@
 package edu.miu.ea.commons.service.mapper;
 
-import ma.glasnost.orika.BoundMapperFacade;
-import ma.glasnost.orika.MapperFactory;
+import java.io.Serializable;
+
 import org.apache.commons.lang.SerializationUtils;
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
+import ma.glasnost.orika.BoundMapperFacade;
+import ma.glasnost.orika.MapperFactory;
 
 /**
  * <h1>Maharishi University of Management<br/>Computer Science Department</h1>

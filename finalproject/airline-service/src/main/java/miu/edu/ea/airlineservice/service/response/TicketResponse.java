@@ -3,10 +3,11 @@ package miu.edu.ea.airlineservice.service.response;
 import miu.edu.ea.airlineservice.domain.Flight;
 import miu.edu.ea.airlineservice.domain.Reservation;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 public class TicketResponse {
-
     private Long id;
 
     private String number;
@@ -14,11 +15,20 @@ public class TicketResponse {
 
     private String passengerId;
 
-    private Flight flight;
+    private FlightResponse flight;
 
-    private Reservation reservation;
+    private String reservationCode;
 
     public TicketResponse() {
+    }
+
+    public TicketResponse(Long id, String number, LocalDate flightDate, String passengerId, FlightResponse flight, String reservationCode) {
+        this.id = id;
+        this.number = number;
+        this.flightDate = flightDate;
+        this.passengerId = passengerId;
+        this.flight = flight;
+        this.reservationCode = reservationCode;
     }
 
     public Long getId() {
@@ -53,19 +63,19 @@ public class TicketResponse {
         this.passengerId = passengerId;
     }
 
-    public Flight getFlight() {
+    public FlightResponse getFlight() {
         return flight;
     }
 
-    public void setFlight(Flight flight) {
+    public void setFlight(FlightResponse flight) {
         this.flight = flight;
     }
 
-    public Reservation getReservation() {
-        return reservation;
+    public String getReservationCode() {
+        return reservationCode;
     }
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
+    public void setReservationCode(String reservationCode) {
+        this.reservationCode = reservationCode;
     }
 }

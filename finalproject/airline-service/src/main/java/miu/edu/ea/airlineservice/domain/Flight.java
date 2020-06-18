@@ -8,7 +8,7 @@ import java.util.List;
 public class Flight {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String number;
@@ -31,6 +31,14 @@ public class Flight {
     @ManyToMany(mappedBy = "flights")
     private List<Reservation> reservations;
 
+    public Flight(String number, int capacity, LocalDateTime departureTime, LocalDateTime arrivalTime, Airport arrival, Airport departure) {
+        this.number = number;
+        this.capacity = capacity;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.departure = departure;
+        this.arrival = arrival;
+    }
     public Flight() {
     }
 

@@ -1,12 +1,12 @@
 package edu.miu.ea.commons.repository.search;
 
-import org.springframework.data.jpa.domain.Specification;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import org.springframework.data.jpa.domain.Specification;
 
 /**
  * <h1>Maharishi University of Management<br/>Computer Science Department</h1>
