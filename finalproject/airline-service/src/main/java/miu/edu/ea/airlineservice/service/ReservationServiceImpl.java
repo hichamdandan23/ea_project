@@ -11,11 +11,14 @@ import miu.edu.ea.airlineservice.service.mapper.TicketMapper;
 import miu.edu.ea.airlineservice.service.request.ReservationRequest;
 import miu.edu.ea.airlineservice.service.response.ReservationResponse;
 import miu.edu.ea.airlineservice.service.response.TicketResponse;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -125,5 +128,43 @@ public class ReservationServiceImpl implements ReservationService {
         sb.append(inputString);
 
         return sb.toString();
+    }
+
+    @Override
+    public List<ReservationResponse> getReservationsByCreator(Long creatorId, Pageable pageable) {
+        List<Reservation> reservations = reservationRepository.findAll(new Specification<Reservation>() {
+            @Override
+            public Predicate toPredicate(Root<Reservation> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> predicates = new ArrayList<>();
+                predicates.add(criteriaBuilder.equal(root.get("createdById"), creatorId.toString()));
+                return  criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]))
+                        .getRestriction();
+            }
+        }, pageable).getContent();
+        return reservations.stream()
+                .map(reservation -> ReservationMapper.mapToReservationResponse(reservation))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ReservationResponse> getReservationsByPassenger(Long passengerId, Pageable pageable) {
+        List<Reservation> reservations = reservationRepository.findAll(new Specification<Reservation>() {
+            @Override
+            public Predicate toPredicate(Root<Reservation> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> predicates = new ArrayList<>();
+                predicates.add(criteriaBuilder.equal(root.get("passengerId"), passengerId.toString()));
+                return  criteriaQuery.where(predicates.toArray(new Predicate[predicates.size()]))
+                        .getRestriction();
+            }
+        }, pageable).getContent();
+        return reservations.stream()
+                .map(reservation -> ReservationMapper.mapToReservationResponse(reservation))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public ReservationResponse getReservationDetail(Long reservationId) {
+        return ReservationMapper.mapToReservationResponse(
+                reservationRepository.findById(reservationId).orElse(null));
     }
 }

@@ -1,5 +1,6 @@
 package miu.edu.ea.airlineservice.repository;
 
+import edu.miu.ea.commons.repository.BaseRepository;
 import miu.edu.ea.airlineservice.domain.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,7 +14,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Repository
-public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+public interface ReservationRepository extends BaseRepository<Reservation, Long> {
 
     @Query("select distinct r from Reservation r join r.flights f"
             +" where r.reservationStatus='CONFIRMED'"
