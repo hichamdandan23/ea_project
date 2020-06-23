@@ -1,0 +1,32 @@
+server:
+  port: 5551
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mariadb://localhost/ea
+    username: root
+    password: root
+    driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+  devtools:
+    livereload:
+      enabled: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+
+user-service:
+  token-secret: 123456
